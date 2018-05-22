@@ -1,5 +1,6 @@
 package com.arthurtran.game;
 
+import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,6 +11,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 public class Runner extends Application {
@@ -22,6 +24,7 @@ public class Runner extends Application {
     //two player(WIP)(IF TIME)
 
     private Camera camera;
+    private BufferedImageLoader loader; //comes from a library I wrote -Arthur
 
     private double windowWidth, windowHeight;
     private double ballX, ballY;
@@ -30,6 +33,8 @@ public class Runner extends Application {
     private boolean getVelocity = true; //used to get the velocity once per shot
     private boolean ballMoving = false;
     private boolean canShoot = false;
+
+    private BufferedImage map1;
 
     private LinkedList<Objects> objects = new LinkedList<>();
 
@@ -42,6 +47,9 @@ public class Runner extends Application {
         windowHeight = 800;
 
         this.camera = new Camera(0, 0);
+
+        loader = new BufferedImageLoader();
+        map1 = loader.imageLoader("maps/Blok_Scene1.png");
     }
 
     @Override
@@ -75,6 +83,8 @@ public class Runner extends Application {
             }
         }.start();
 
+        loadMap(map1);
+
         stage.show();
     }
 
@@ -84,10 +94,10 @@ public class Runner extends Application {
 
         g.translate(-camera.getX(), -camera.getY());
 
-        g.setFill(Color.gray(1));
-        g.fillRect(100, 100, 100, 100);
-        g.fillRect(300, 100, 100, 100);
-        g.fillRect(100, 300, 100, 100);
+//        g.setFill(Color.gray(1));
+//        g.fillRect(100, 100, 100, 100);
+//        g.fillRect(300, 100, 100, 100);
+//        g.fillRect(100, 300, 100, 100);
 
         for(Objects ob : objects) {
             ob.draw(g);
@@ -110,9 +120,9 @@ public class Runner extends Application {
     public void updateAim() {
         if(!ballMoving) {
             canShoot = true;
-            for(Objects ob : objects) {
-                if(ob.getID() == ID.aim) {
-                    objects.remove(ob);
+            for(int i = 0; i < objects.size(); i++) {
+                if(objects.get(i).getID() == ID.aim) {
+                    objects.remove(objects.get(i));
                 }
             }
             objects.add(new Aim(ballX + 8, ballY + 8, ID.aim));
@@ -125,9 +135,9 @@ public class Runner extends Application {
         canvas.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.SPACE) {
                 if(canShoot) {
-                    for(Objects ob : objects) {
-                        if(ob.getID() == ID.aim) {
-//                            objects.remove(ob);
+                    for(int i = 0; i < objects.size(); i++) {
+                        if(objects.get(i).getID() == ID.aim) {
+                            objects.remove(objects.get(i));
                         }
                     }
                     this.shoot = true;
@@ -154,8 +164,19 @@ public class Runner extends Application {
         objects.add(new Aim(windowWidth / 2, windowHeight / 2, ID.aim));
     }
 
-    public void loadMap() {
+    public void loadMap(BufferedImage map) {
+        for(int y = 0; y < map.getHeight(); y++) {
+            for(int x = 0; x < map.getWidth(); x++) {
+                int color = map.getRGB(y, x);
+                int red = (color >> 16) & 0xff;
+                int green = (color >> 8) & 0xff;
+                int blue = (color) & 0xff;
 
+                if(red == 255) {
+                    objects.add(new Barrier(x * 32, y * 32, ID.barrier));
+                }
+            }
+        }
     }
 
     public LinkedList<Objects> getObjects() {

@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="43d119f9-a062-4d27-8cb3-0a091b984674" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Aim.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Aim.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maps/map1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/maps/map1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$ID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$ID.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/arthurtran/game/Aim.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/arthurtran/game/Aim.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/arthurtran/game/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/arthurtran/game/Ball.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,13 +22,32 @@
       <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="518">
-              <caret line="157" selection-start-line="157" selection-end-line="157" />
+            <state relative-caret-position="266">
+              <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2270#2432#0" expanded="true" />
+                <element signature="e#2431#2432#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Barrier.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Barrier.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="map1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/maps/map1.jpg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="Aim.java" pinned="false" current-in-tab="false">
@@ -98,6 +114,7 @@
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Camera.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Aim.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Ball.java" />
+        <option value="$PROJECT_DIR$/src/com/arthurtran/game/Barrier.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" />
       </list>
     </option>
@@ -115,6 +132,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -139,13 +159,16 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Golf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Golf" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="maps" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -153,6 +176,15 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\trana\Documents\Java\Games\Golf\src\maps" />
+      <recent name="C:\Users\trana\Documents\Java\Games\Golf\src\libs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\trana\Documents\Java\Games\Golf\src\maps" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -240,45 +272,75 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32965517" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info active="true" id="Run" order="7" sideWeight="0.51724136" side_tool="true" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info id="Run" order="7" sideWeight="0.51448274" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48551723" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4827586" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32965517" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Objects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Runner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3822">
           <caret line="182" column="5" lean-forward="true" selection-start-line="182" selection-start-column="5" selection-end-line="182" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -326,6 +388,8 @@
           <caret line="148" lean-forward="true" selection-start-line="148" selection-end-line="148" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -373,6 +437,8 @@
           <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -420,6 +486,8 @@
           <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -467,6 +535,8 @@
           <caret line="74" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -514,6 +584,8 @@
           <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,6 +633,8 @@
           <caret line="44" column="70" selection-start-line="44" selection-start-column="70" selection-end-line="44" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -591,6 +665,8 @@
           <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,6 +697,8 @@
           <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -631,6 +709,8 @@
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -641,6 +721,8 @@
           <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -651,6 +733,8 @@
           <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -661,6 +745,8 @@
           <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -702,15 +788,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Runner.java">
+    <entry file="file://$PROJECT_DIR$/src/maps/map1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Barrier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="157" selection-start-line="157" selection-end-line="157" />
+        <state relative-caret-position="357">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Runner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2270#2432#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Golf</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
