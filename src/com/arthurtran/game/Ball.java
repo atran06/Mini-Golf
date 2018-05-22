@@ -29,31 +29,20 @@ public class Ball extends Objects {
 
         if(runner.getShoot())  {
             if(runner.getGetVelocity()) {
-                velX = (Aim.x2 - x) / 10;
-                velY = (Aim.y2 - y) / 10;
+                velX = (Aim.x2 - x - 6) / 10;
+                velY = (Aim.y2 - y - 7) / 10;
                 runner.setGetVelocity(false);
             }
         }
-        if(Math.abs(velX) < .2) {
+        if(Math.abs(velX) < .1) {
             velX = 0;
+            velY = 0;
             runner.setBallMoving(false);
             runner.setBallX(x);
             runner.setBallY(y);
         } else {
-            if(velX > 0) {
-                velX -= friction;
-            } else {
-                velX += friction;
-            }
-        }
-        if(Math.abs(velY) < .2) {
-            velY = 0;
-        } else {
-            if(velY > 0) {
-                velY -= friction;
-            } else {
-                velY += friction;
-            }
+            velX *= .95;
+            velY *= .95;
         }
         x += velX;
         y += velY;

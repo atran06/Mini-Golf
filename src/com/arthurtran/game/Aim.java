@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Aim extends Objects {
 
-    private double angle = 135;
+    private double angle = 140;
     private double angleRad;
     private double length = 100;
     private double lineWidth = 3;
@@ -17,7 +17,7 @@ public class Aim extends Objects {
     public Aim(double x, double y, Enum ID) {
         super(x, y, ID);
 
-        angleRad = Math.toRadians(angle - 90);
+        angleRad = Math.toRadians(-angle);
 
         x2 = x + (length * Math.cos(angleRad));
         y2 = y + (length * Math.sin(angleRad));

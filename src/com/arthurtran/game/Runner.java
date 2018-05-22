@@ -14,6 +14,13 @@ import java.util.LinkedList;
 
 public class Runner extends Application {
 
+    // TODO: 5/22/2018
+    //point tracker
+    //implement strength
+    //create mini-map
+    //make maps(MAKE HARD(IF TIME))
+    //two player(WIP)(IF TIME)
+
     private Camera camera;
 
     private double windowWidth, windowHeight;
@@ -58,7 +65,7 @@ public class Runner extends Application {
 
         objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
         System.out.println(ballX);
-        objects.add(new Aim(ballX + 7, ballY + 7, ID.aim));
+        objects.add(new Aim(ballX + 7, ballY + 7, ID.aim)); //7 is due to line width
 
         new AnimationTimer() {
             @Override
@@ -118,6 +125,11 @@ public class Runner extends Application {
         canvas.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.SPACE) {
                 if(canShoot) {
+                    for(Objects ob : objects) {
+                        if(ob.getID() == ID.aim) {
+//                            objects.remove(ob);
+                        }
+                    }
                     this.shoot = true;
                     this.ballMoving = true;
                 }
@@ -140,6 +152,10 @@ public class Runner extends Application {
 
         objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
         objects.add(new Aim(windowWidth / 2, windowHeight / 2, ID.aim));
+    }
+
+    public void loadMap() {
+
     }
 
     public LinkedList<Objects> getObjects() {
