@@ -15,6 +15,9 @@ public class Barrier extends Objects {
     protected void draw(GraphicsContext g) {
         g.setFill(Color.gray(1));
         g.fillRect(x, y, 32, 32);
+
+        g.setLineWidth(1);
+
         g.setStroke(Color.gray(0));
         g.strokeRect(x, y, 32, 32);
     }
@@ -26,7 +29,7 @@ public class Barrier extends Objects {
 
     @Override
     protected Rectangle2D getBounds() {
-        return null;
+        return new Rectangle2D.Double(x, y, 32, 32);
     }
 
     @Override
