@@ -20,10 +20,7 @@ public class Runner extends Application {
     // TODO: 5/22/2018
     //point tracker
     //implement strength
-    //implement collisions
     //create mini-map
-    //make maps(MAKE HARD(IF TIME))
-    //two player(WIP)(IF TIME)
 
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
@@ -32,17 +29,24 @@ public class Runner extends Application {
     private double windowWidth, windowHeight;
     private double ballX, ballY;
 
+    private int par;
+    private int stroke;
+    private int scoreCurrent = 0;
+    private int scoreFinal = 0;
+    private int hole = 1;
+
     private boolean shoot = false;
     private boolean getVelocity = true; //used to get the velocity once per shot
     private boolean ballMoving = false;
     private boolean canShoot = false;
 
     private BufferedImage map1;
+    private BufferedImage map2;
 
     private LinkedList<Objects> objects = new LinkedList<>();
 
     public static enum ID {
-        ball, barrier, obstacle, aim
+        ball, barrier, obstacle, aim, hole
     }
 
     public Runner() {
@@ -52,7 +56,8 @@ public class Runner extends Application {
         this.camera = new Camera(0, 0);
 
         loader = new BufferedImageLoader();
-        map1 = loader.imageLoader("maps/map1v2.png");
+        map1 = loader.imageLoader("maps/map2.png");
+        map2 = loader.imageLoader("maps/map1v2.png");
 
         audio = new AudioPlayer("/music/golfOST2.wav", true);
         audio.setVolume(0.2f);
@@ -112,14 +117,23 @@ public class Runner extends Application {
     }
 
     public void update() {
-        for(Objects ob : objects) {
-            ob.update();
-            if(ob.getID() == ID.ball) {
-                camera.update(ob);
+        getHole();
+
+        scoreCurrent = stroke - par;
+
+        for(int i = 0; i < objects.size(); i++) {
+            objects.get(i).update();
+            if(objects.get(i).getID() == ID.ball) {
+                camera.update(objects.get(i));
             }
         }
 
         updateAim();
+    }
+
+    public void getHole() {
+        if(hole == 1) par = 3;
+        if(hole == 2) par = 5;
     }
 
     public void updateAim() {
@@ -145,6 +159,7 @@ public class Runner extends Application {
                             objects.remove(objects.get(i));
                         }
                     }
+                    stroke++;
                     this.shoot = true;
                     this.ballMoving = true;
                 }
@@ -171,8 +186,22 @@ public class Runner extends Application {
     public void restart() {
         objects.clear();
 
-        objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
-        objects.add(new Aim(ballX, ballY, ID.aim, this));
+        if(hole == 1) loadMap(map1);
+        if(hole == 2) loadMap(map2);
+    }
+
+    public void nextLevel() {
+        objects.clear();
+
+        scoreFinal += scoreCurrent;
+
+        System.out.println(scoreFinal);
+
+        hole++;
+        switch(hole) {
+            case 2 :
+                loadMap(map2);
+        }
     }
 
     public void loadMap(BufferedImage map) {
@@ -189,6 +218,9 @@ public class Runner extends Application {
                 if(blue == 255) {
                     objects.add(new Ball(x * 32, y * 32, ID.ball, this));
                     objects.add(new Aim(ballX, ballY, ID.aim, this));
+                }
+                if(green == 255) {
+                    objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
             }
         }

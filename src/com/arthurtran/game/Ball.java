@@ -10,7 +10,7 @@ public class Ball extends Objects {
     private Runner runner;
 
     private double width, height;
-    private double speed = 10; //the higher the 'speed' the slower the ball
+    private double speed = 5; //the higher the 'speed' the slower the ball
 
     public Ball(double x, double y, Enum ID, Runner runner) {
         super(x, y, ID);
@@ -25,7 +25,7 @@ public class Ball extends Objects {
         g.setFill(Color.gray(1));
 //        g.fillOval(x, y, width, height);
         g.setStroke(Color.gray(1));
-        g.strokeOval(x, y, width, height);
+//        g.strokeOval(x, y, width, height);
 
         g.setLineWidth(1);
 
@@ -39,11 +39,11 @@ public class Ball extends Objects {
 
         //getBoundsRight
         g.setStroke(Color.rgb(0, 0, 255));
-        g.strokeRect(x + width / 2, y, width / 2, height);
+        g.strokeRect(x + 11, y + 2, width - 11, height - 4);
 
         //getBoundsLeft
         g.setStroke(Color.gray(0));
-        g.strokeRect(x, y, width / 2, height);
+        g.strokeRect(x, y + 2, width - 11, height - 4);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class Ball extends Objects {
             runner.setBallX(x);
             runner.setBallY(y);
         } else {
-            velX *= .96;
-            velY *= .96;
+            velX *= .95;
+            velY *= .95;
         }
         x += velX;
         y += velY;
@@ -77,6 +77,14 @@ public class Ball extends Objects {
             if(runner.getObjects().get(i).getID() == Runner.ID.barrier) {
                 Objects barrier = runner.getObjects().get(i);
 
+                if(this.getBoundsRight().intersects(barrier.getBounds())) {
+                    velX = -velX;
+                    this.x = barrier.getX() - 16;
+                }
+                if(this.getBoundsLeft().intersects(barrier.getBounds())) {
+                    velX = -velX;
+                    this.x = barrier.getX() + 32;
+                }
                 if(this.getBoundsTop().intersects(barrier.getBounds())) {
                     velY = -velY;
                     this.y = barrier.getY() + 32;
@@ -85,13 +93,12 @@ public class Ball extends Objects {
                     velY = -velY;
                     this.y = barrier.getY() - 16;
                 }
-                if(this.getBoundsRight().intersects(barrier.getBounds())) {
-                    velX = -velX;
-                    this.x = barrier.getX() - 16;
-                }
-                if(this.getBoundsLeft().intersects(barrier.getBounds())) {
-                    velX = -velX;
-                    this.x = barrier.getX() + 32;
+            }
+            if(runner.getObjects().get(i).getID() == Runner.ID.hole) {
+                Objects hole = runner.getObjects().get(i);
+
+                if(this.getBounds().intersects(hole.getBounds())) {
+                    runner.nextLevel();
                 }
             }
         }
@@ -114,11 +121,11 @@ public class Ball extends Objects {
 
     @Override
     protected Rectangle2D getBoundsLeft() {
-        return new Rectangle2D.Double(x, y, width / 2, height);
+        return new Rectangle2D.Double(x, y + 3, width - 11, height - 6);
     }
 
     @Override
     protected Rectangle2D getBoundsRight() {
-        return new Rectangle2D.Double(x + width / 2, y, width / 2, height);
+        return new Rectangle2D.Double(x + 11, y + 3, width - 11, height - 6);
     }
 }
