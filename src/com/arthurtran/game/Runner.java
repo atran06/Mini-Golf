@@ -49,7 +49,7 @@ public class Runner extends Application {
         this.camera = new Camera(0, 0);
 
         loader = new BufferedImageLoader();
-        map1 = loader.imageLoader("maps/Blok_Scene1.png");
+        map1 = loader.imageLoader("maps/map1v2.png");
     }
 
     @Override
@@ -167,7 +167,7 @@ public class Runner extends Application {
     public void loadMap(BufferedImage map) {
         for(int y = 0; y < map.getHeight(); y++) {
             for(int x = 0; x < map.getWidth(); x++) {
-                int color = map.getRGB(y, x);
+                int color = map.getRGB(x, y);
                 int red = (color >> 16) & 0xff;
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;

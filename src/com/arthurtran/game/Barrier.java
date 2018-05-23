@@ -15,7 +15,7 @@ public class Barrier extends Objects {
     protected void draw(GraphicsContext g) {
         g.setFill(Color.gray(1));
         g.fillRect(x, y, 32, 32);
-        g.setFill(Color.gray(0));
+        g.setStroke(Color.gray(0));
         g.strokeRect(x, y, 32, 32);
     }
 

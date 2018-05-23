@@ -26,7 +26,6 @@ public class Ball extends Objects {
 
     @Override
     protected void update() {
-
         if(runner.getShoot())  {
             if(runner.getGetVelocity()) {
                 velX = (Aim.x2 - x - 6) / 10;
@@ -34,15 +33,15 @@ public class Ball extends Objects {
                 runner.setGetVelocity(false);
             }
         }
-        if(Math.abs(velX) < .1) {
+        if(Math.abs(velX) < .01) {
             velX = 0;
             velY = 0;
             runner.setBallMoving(false);
             runner.setBallX(x);
             runner.setBallY(y);
         } else {
-            velX *= .95;
-            velY *= .95;
+            velX *= .99;
+            velY *= .99;
         }
         x += velX;
         y += velY;

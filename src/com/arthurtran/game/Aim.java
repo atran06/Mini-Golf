@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Aim extends Objects {
 
-    private double angle = 140;
+    private double angle = 270;
     private double angleRad;
     private double length = 100;
     private double lineWidth = 3;
