@@ -14,6 +14,11 @@ public class Camera {
 //        y = object.getY() - (800 / 2 - 8);
         x += ((object.getX() - x) - 800 / 2 - 8) * 0.05; //tweening algorithm
         y += ((object.getY() - y) - 800 / 2 - 8) * 0.05;
+
+        if(x >= 800) x = 800;
+        if(x <= 0) x = 0;
+        if(y >= 800) y = 800;
+        if(y <= 0) y = 0;
     }
 
     public double getX() {

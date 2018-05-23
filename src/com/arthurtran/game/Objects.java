@@ -19,6 +19,10 @@ public abstract class Objects {
     protected abstract void draw(GraphicsContext g);
     protected abstract void update();
     protected abstract Rectangle2D getBounds();
+    protected abstract Rectangle2D getBoundsTop();
+    protected abstract Rectangle2D getBoundsBottom();
+    protected abstract Rectangle2D getBoundsLeft();
+    protected abstract Rectangle2D getBoundsRight();
 
     public double getX() {
         return x;

@@ -7,27 +7,32 @@ import java.awt.geom.Rectangle2D;
 
 public class Aim extends Objects {
 
-    private double angle = 270;
+    private Runner runner;
+
+    public static double angle = 0;
     private double angleRad;
     private double length = 100;
     private double lineWidth = 3;
+    private double offset = 8;
 
     public static double x2, y2;
 
-    public Aim(double x, double y, Enum ID) {
+    public Aim(double x, double y, Enum ID, Runner runner) {
         super(x, y, ID);
+
+        this.runner = runner;
 
         angleRad = Math.toRadians(-angle);
 
-        x2 = x + (length * Math.cos(angleRad));
-        y2 = y + (length * Math.sin(angleRad));
+        x2 = offset + x + (length * Math.cos(angleRad));
+        y2 = offset + y + (length * Math.sin(angleRad));
     }
 
     @Override
     protected void draw(GraphicsContext g) {
         g.setStroke(Color.gray(1));
         g.setLineWidth(lineWidth);
-        g.strokeLine(x, y, x2, y2);
+        g.strokeLine(x + offset, y + offset, x2, y2);
     }
 
     @Override
@@ -37,6 +42,26 @@ public class Aim extends Objects {
 
     @Override
     protected Rectangle2D getBounds() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsTop() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsBottom() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsLeft() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsRight() {
         return null;
     }
 

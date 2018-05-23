@@ -28,4 +28,24 @@ public class Barrier extends Objects {
     protected Rectangle2D getBounds() {
         return null;
     }
+
+    @Override
+    protected Rectangle2D getBoundsTop() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsBottom() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsLeft() {
+        return null;
+    }
+
+    @Override
+    protected Rectangle2D getBoundsRight() {
+        return null;
+    }
 }

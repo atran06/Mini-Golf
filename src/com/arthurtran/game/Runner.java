@@ -1,5 +1,6 @@
 package com.arthurtran.game;
 
+import com.arthurtran.Arch2D.main.AudioPlayer;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -19,12 +20,14 @@ public class Runner extends Application {
     // TODO: 5/22/2018
     //point tracker
     //implement strength
+    //implement collisions
     //create mini-map
     //make maps(MAKE HARD(IF TIME))
     //two player(WIP)(IF TIME)
 
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
+    private AudioPlayer audio;
 
     private double windowWidth, windowHeight;
     private double ballX, ballY;
@@ -50,6 +53,9 @@ public class Runner extends Application {
 
         loader = new BufferedImageLoader();
         map1 = loader.imageLoader("maps/map1v2.png");
+
+        audio = new AudioPlayer("/music/golfOST2.wav", true);
+        audio.setVolume(0.2f);
     }
 
     @Override
@@ -71,9 +77,8 @@ public class Runner extends Application {
         stage.setResizable(false); //strange bug with this method *cough* Swing is better *cough*
         stage.sizeToScene(); //fixed with this
 
-        objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
-        System.out.println(ballX);
-        objects.add(new Aim(ballX + 7, ballY + 7, ID.aim)); //7 is due to line width
+//        objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
+//        objects.add(new Aim(ballX, ballY, ID.aim, this)); //7 is due to line width
 
         new AnimationTimer() {
             @Override
@@ -125,7 +130,7 @@ public class Runner extends Application {
                     objects.remove(objects.get(i));
                 }
             }
-            objects.add(new Aim(ballX + 8, ballY + 8, ID.aim));
+            objects.add(new Aim(ballX, ballY, ID.aim, this));
         } else {
             canShoot = false;
         }
@@ -147,6 +152,12 @@ public class Runner extends Application {
             if(e.getCode() == KeyCode.R) {
                 restart();
             }
+            if(e.getCode() == KeyCode.UP) {
+                Aim.angle += 2;
+            }
+            if(e.getCode() == KeyCode.DOWN) {
+                Aim.angle -= 2;
+            }
         });
 
         canvas.setOnKeyReleased(e -> {
@@ -161,7 +172,7 @@ public class Runner extends Application {
         objects.clear();
 
         objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
-        objects.add(new Aim(windowWidth / 2, windowHeight / 2, ID.aim));
+        objects.add(new Aim(ballX, ballY, ID.aim, this));
     }
 
     public void loadMap(BufferedImage map) {
@@ -174,6 +185,10 @@ public class Runner extends Application {
 
                 if(red == 255) {
                     objects.add(new Barrier(x * 32, y * 32, ID.barrier));
+                }
+                if(blue == 255) {
+                    objects.add(new Ball(x * 32, y * 32, ID.ball, this));
+                    objects.add(new Aim(ballX, ballY, ID.aim, this));
                 }
             }
         }
