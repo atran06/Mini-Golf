@@ -18,13 +18,12 @@ import java.util.LinkedList;
 public class Runner extends Application {
 
     // TODO: 5/22/2018
-    //point tracker
     //implement strength
-    //create mini-map
 
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
     private AudioPlayer audio;
+    private MiniMap miniMap;
 
     private double windowWidth, windowHeight;
     private double ballX, ballY;
@@ -48,6 +47,12 @@ public class Runner extends Application {
     public static enum ID {
         ball, barrier, obstacle, aim, hole
     }
+
+    public static enum STATE {
+        menu, game, end
+    }
+
+    public STATE state = STATE.menu;
 
     public Runner() {
         windowWidth = 800;
@@ -99,34 +104,42 @@ public class Runner extends Application {
     }
 
     public void draw(GraphicsContext g) {
-        g.setFill(Color.gray(.5));
-        g.fillRect(0, 0, windowWidth, windowHeight);
+        if(state == STATE.menu) {
+            g.setFill(Color.gray(0));
+            g.fillRect(0, 0, windowWidth, windowHeight);
+        } else if(state == STATE.game) {
+            g.setFill(Color.gray(.5));
+            g.fillRect(0, 0, windowWidth, windowHeight);
 
-        g.translate(-camera.getX(), -camera.getY());
+            g.translate(-camera.getX(), -camera.getY());
 
-//        g.setFill(Color.gray(1));
-//        g.fillRect(100, 100, 100, 100);
-//        g.fillRect(300, 100, 100, 100);
-//        g.fillRect(100, 300, 100, 100);
+            for (Objects ob : objects) {
+                ob.draw(g);
+            }
 
-        for(Objects ob : objects) {
-            ob.draw(g);
+            g.translate(camera.getX(), camera.getY());
+
+            miniMap.draw(g);
+        } else if(state == STATE.end) {
+            g.fillRect(0, 0, windowWidth, windowHeight);
+            g.strokeText(Integer.toString(scoreFinal), 400, 400);
         }
-
-        g.translate(camera.getX(), camera.getY());
     }
 
     public void update() {
-        getHole();
-
-        scoreCurrent = stroke - par;
-
         for(int i = 0; i < objects.size(); i++) {
-            objects.get(i).update();
-            if(objects.get(i).getID() == ID.ball) {
+            if (objects.get(i).getID() == ID.ball) {
                 camera.update(objects.get(i));
             }
+            objects.get(i).update();
         }
+
+        getHole();
+
+        if (hole == 1) this.miniMap = new MiniMap(map1, this);
+        if (hole == 2) this.miniMap = new MiniMap(map2, this);
+
+        scoreCurrent = stroke - par;
 
         updateAim();
     }
@@ -173,6 +186,15 @@ public class Runner extends Application {
             if(e.getCode() == KeyCode.DOWN) {
                 Aim.angle -= 2;
             }
+            if(e.getCode() == KeyCode.DIGIT1) {
+                this.state = STATE.menu;
+            }
+            if(e.getCode() == KeyCode.DIGIT2) {
+                this.state = STATE.game;
+            }
+            if(e.getCode() == KeyCode.DIGIT3) {
+                this.state = STATE.end;
+            }
         });
 
         canvas.setOnKeyReleased(e -> {
@@ -190,18 +212,26 @@ public class Runner extends Application {
         if(hole == 2) loadMap(map2);
     }
 
+    public void restartGame() {
+        hole = 1;
+        restart();
+    }
+
     public void nextLevel() {
         objects.clear();
 
-        scoreFinal += scoreCurrent;
-
-        System.out.println(scoreFinal);
+        getScoreFinal();
+        stroke = 0;
 
         hole++;
         switch(hole) {
             case 2 :
                 loadMap(map2);
         }
+    }
+
+    public void getScoreFinal() {
+        scoreFinal += scoreCurrent;
     }
 
     public void loadMap(BufferedImage map) {
@@ -250,8 +280,21 @@ public class Runner extends Application {
         this.ballY = ballY;
     }
 
+    public double getBallX() {
+        return ballX;
+    }
+
+    public double getBallY() {
+        return ballY;
+    }
+
     public void setBallMoving(boolean moving) {
         this.ballMoving = moving;
+    }
+
+    public boolean getEnd() {
+        if(hole == 2) return true;
+        return false;
     }
 
     public static void main(String[] args) {

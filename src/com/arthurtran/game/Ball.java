@@ -62,12 +62,14 @@ public class Ball extends Objects {
             velX = 0;
             velY = 0;
             runner.setBallMoving(false);
-            runner.setBallX(x);
-            runner.setBallY(y);
         } else {
             velX *= .95;
             velY *= .95;
         }
+
+        runner.setBallX(x);
+        runner.setBallY(y);
+
         x += velX;
         y += velY;
     }
@@ -97,7 +99,10 @@ public class Ball extends Objects {
             if(runner.getObjects().get(i).getID() == Runner.ID.hole) {
                 Objects hole = runner.getObjects().get(i);
 
-                if(this.getBounds().intersects(hole.getBounds())) {
+                if(this.getBounds().intersects(hole.getBounds()) && runner.getEnd()) {
+                    runner.nextLevel();
+                    runner.state = Runner.STATE.end;
+                } else if(this.getBounds().intersects(hole.getBounds())) {
                     runner.nextLevel();
                 }
             }
