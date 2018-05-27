@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="43d119f9-a062-4d27-8cb3-0a091b984674" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$ID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$ID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$STATE.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner$STATE.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/game/Runner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/objects/Ball.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Golf/com/arthurtran/objects/Ball.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +20,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Runner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Runner.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
@@ -29,92 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiniMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/map/MiniMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FullMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/map/FullMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Barrier.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Barrier.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="966">
-              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Aim.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Aim.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1281">
-              <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Camera.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Camera.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Ball.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2961">
-              <caret line="147" selection-start-line="147" selection-end-line="147" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Hole.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Hole.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
-              <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Objects.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Objects.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
+            <state relative-caret-position="383">
+              <caret line="139" column="74" selection-start-line="139" selection-start-column="74" selection-end-line="139" selection-end-column="74" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -151,12 +75,12 @@
         <option value="$PROJECT_DIR$/src/Entities/Ball.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Objects.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/objects/Aim.java" />
-        <option value="$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/objects/Barrier.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/objects/Hole.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/map/MiniMap.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/map/FullMap.java" />
         <option value="$PROJECT_DIR$/src/com/arthurtran/game/Runner.java" />
+        <option value="$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java" />
       </list>
     </option>
   </component>
@@ -340,17 +264,18 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32965517" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info id="Run" order="7" sideWeight="0.52689654" side_tool="true" weight="0.25" />
+      <window_info active="true" id="Run" order="7" sideWeight="0.52827585" side_tool="true" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Designer" order="4" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47310343" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.47172415" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="5" />
@@ -363,7 +288,6 @@
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32965517" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -798,47 +722,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Objects.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="26" column="10" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Aim.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2961">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Barrier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -855,9 +742,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/map/FullMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Barrier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/arthurtran/map/MiniMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="210">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -865,13 +772,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/map/FullMap.java">
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Aim.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+        <state relative-caret-position="299">
+          <caret line="66" column="10" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/game/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -883,6 +797,16 @@
             <element signature="imports" expanded="true" />
             <element signature="e#3430#3592#0" expanded="true" />
             <element signature="e#3591#3592#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/arthurtran/objects/Ball.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="139" column="74" selection-start-line="139" selection-start-column="74" selection-end-line="139" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
