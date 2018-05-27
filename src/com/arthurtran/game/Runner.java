@@ -1,5 +1,12 @@
 package com.arthurtran.game;
 
+/*
+Mini Golf Final Project
+
+Arthur Tran, Michael Crowe, Danny Padilla, Parth Mehta
+Period 5, 6
+ */
+
 import com.arthurtran.Arch2D.main.AudioPlayer;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import com.arthurtran.map.FullMap;
