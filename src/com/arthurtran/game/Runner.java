@@ -2,6 +2,12 @@ package com.arthurtran.game;
 
 import com.arthurtran.Arch2D.main.AudioPlayer;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
+import com.arthurtran.map.FullMap;
+import com.arthurtran.map.MiniMap;
+import com.arthurtran.objects.Aim;
+import com.arthurtran.objects.Ball;
+import com.arthurtran.objects.Barrier;
+import com.arthurtran.objects.Hole;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -27,6 +33,7 @@ public class Runner extends Application {
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
     private AudioPlayer audio; //also from the library I wrote - Arthur
     private MiniMap miniMap;
+    private FullMap fullMap;
 
     private double windowWidth, windowHeight; //the width and height of the window
     private double ballX, ballY; //used to hold the ball's position... could have used POINT but heard they were slow
@@ -127,6 +134,7 @@ public class Runner extends Application {
             ///////////////////////////////////////////////////////////////////
 
             miniMap.draw(g);
+//            fullMap.draw(g);
 
         } else if(state == STATE.end) {
             g.fillRect(0, 0, windowWidth, windowHeight);
@@ -148,8 +156,14 @@ public class Runner extends Application {
         getHole();
 
         if(addMiniMapOnce) {
-            if (hole == 1) this.miniMap = new MiniMap(map1, this);
-            if (hole == 2) this.miniMap = new MiniMap(map2, this);
+            if (hole == 1) {
+                this.miniMap = new MiniMap(map1, this);
+                this.fullMap = new FullMap(map1, this);
+            }
+            if (hole == 2) {
+                this.miniMap = new MiniMap(map2, this);
+                this.fullMap = new FullMap(map2, this);
+            }
             addMiniMapOnce = false;
         }
 
@@ -210,6 +224,8 @@ public class Runner extends Application {
             if(e.getCode() == KeyCode.DOWN) {
                 Aim.angle -= 2;
             }
+
+            //Used for testing the states of the game
             if(e.getCode() == KeyCode.DIGIT1) {
                 this.state = STATE.menu;
             }

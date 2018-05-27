@@ -16,15 +16,15 @@ public abstract class Objects {
         this.ID = ID;
     }
 
-    protected abstract void draw(GraphicsContext g);
-    protected abstract void update();
+    public abstract void draw(GraphicsContext g);
+    public abstract void update();
 
     //Used for collisions
-    protected abstract Rectangle2D getBounds();
-    protected abstract Rectangle2D getBoundsTop();
-    protected abstract Rectangle2D getBoundsBottom();
-    protected abstract Rectangle2D getBoundsLeft();
-    protected abstract Rectangle2D getBoundsRight();
+    public abstract Rectangle2D getBounds();
+    public abstract Rectangle2D getBoundsTop();
+    public abstract Rectangle2D getBoundsBottom();
+    public abstract Rectangle2D getBoundsLeft();
+    public abstract Rectangle2D getBoundsRight();
 
     public double getX() {
         return x;

@@ -1,5 +1,8 @@
-package com.arthurtran.game;
+package com.arthurtran.objects;
 
+import com.arthurtran.game.Objects;
+import com.arthurtran.game.Runner;
+import com.arthurtran.objects.Aim;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -21,7 +24,7 @@ public class Ball extends Objects {
     }
 
     @Override
-    protected void draw(GraphicsContext g) {
+    public void draw(GraphicsContext g) {
         g.setFill(Color.gray(1));
 //        g.fillOval(x, y, width, height);
         g.setStroke(Color.gray(1));
@@ -47,7 +50,7 @@ public class Ball extends Objects {
     }
 
     @Override
-    protected void update() {
+    public void update() {
 
         collision();
 
@@ -118,27 +121,27 @@ public class Ball extends Objects {
     }
 
     @Override
-    protected Rectangle2D getBounds() {
+    public Rectangle2D getBounds() {
         return new Rectangle2D.Double(x, y, width, height);
     }
 
     @Override
-    protected Rectangle2D getBoundsTop() {
+    public Rectangle2D getBoundsTop() {
         return new Rectangle2D.Double(x + 5, y, width - 10, height / 2);
     }
 
     @Override
-    protected Rectangle2D getBoundsBottom() {
+    public Rectangle2D getBoundsBottom() {
         return new Rectangle2D.Double(x + 5, y + width / 2, width - 10, height / 2);
     }
 
     @Override
-    protected Rectangle2D getBoundsLeft() {
+    public Rectangle2D getBoundsLeft() {
         return new Rectangle2D.Double(x, y + 3, width - 11, height - 6);
     }
 
     @Override
-    protected Rectangle2D getBoundsRight() {
+    public Rectangle2D getBoundsRight() {
         return new Rectangle2D.Double(x + 11, y + 3, width - 11, height - 6);
     }
 }

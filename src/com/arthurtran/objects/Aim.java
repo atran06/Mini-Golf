@@ -1,5 +1,7 @@
-package com.arthurtran.game;
+package com.arthurtran.objects;
 
+import com.arthurtran.game.Objects;
+import com.arthurtran.game.Runner;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -30,39 +32,39 @@ public class Aim extends Objects {
     }
 
     @Override
-    protected void draw(GraphicsContext g) {
+    public void draw(GraphicsContext g) {
         g.setStroke(Color.gray(1));
         g.setLineWidth(lineWidth);
         g.strokeLine(x + offset, y + offset, x2, y2);
     }
 
     @Override
-    protected void update() {
+    public void update() {
 
     }
 
     @Override
-    protected Rectangle2D getBounds() {
+    public Rectangle2D getBounds() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsTop() {
+    public Rectangle2D getBoundsTop() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsBottom() {
+    public Rectangle2D getBoundsBottom() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsLeft() {
+    public Rectangle2D getBoundsLeft() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsRight() {
+    public Rectangle2D getBoundsRight() {
         return null;
     }
 

@@ -1,5 +1,6 @@
-package com.arthurtran.game;
+package com.arthurtran.objects;
 
+import com.arthurtran.game.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -12,7 +13,7 @@ public class Barrier extends Objects {
     }
 
     @Override
-    protected void draw(GraphicsContext g) {
+    public void draw(GraphicsContext g) {
         g.setFill(Color.gray(1));
         g.fillRect(x, y, 32, 32);
 
@@ -23,32 +24,32 @@ public class Barrier extends Objects {
     }
 
     @Override
-    protected void update() {
+    public void update() {
 
     }
 
     @Override
-    protected Rectangle2D getBounds() {
+    public Rectangle2D getBounds() {
         return new Rectangle2D.Double(x, y, 32, 32);
     }
 
     @Override
-    protected Rectangle2D getBoundsTop() {
+    public Rectangle2D getBoundsTop() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsBottom() {
+    public Rectangle2D getBoundsBottom() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsLeft() {
+    public Rectangle2D getBoundsLeft() {
         return null;
     }
 
     @Override
-    protected Rectangle2D getBoundsRight() {
+    public Rectangle2D getBoundsRight() {
         return null;
     }
 }

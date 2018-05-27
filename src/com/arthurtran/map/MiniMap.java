@@ -1,9 +1,9 @@
-package com.arthurtran.game;
+package com.arthurtran.map;
 
+import com.arthurtran.game.Runner;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class MiniMap {
