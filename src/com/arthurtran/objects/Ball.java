@@ -34,19 +34,19 @@ public class Ball extends Objects {
 
         //getBoundsTop
         g.setStroke(Color.rgb(255, 0, 0));
-        g.strokeRect(x + 5, y, width - 10, height / 2);
+        g.strokeRect(x, y, width, height / 2);
 
         //getBoundsBottom
         g.setStroke(Color.rgb(0, 255, 0));
-        g.strokeRect(x + 5, y + width / 2, width - 10, height / 2);
+        g.strokeRect(x, y + height / 2, width, height / 2);
 
         //getBoundsRight
         g.setStroke(Color.rgb(0, 0, 255));
-        g.strokeRect(x + 11, y + 2, width - 11, height - 4);
+        g.strokeRect(x + width / 2, y, width / 2, height);
 
         //getBoundsLeft
         g.setStroke(Color.gray(0));
-        g.strokeRect(x, y + 2, width - 11, height - 4);
+        g.strokeRect(x, y, width / 2, height);
     }
 
     @Override
@@ -90,19 +90,19 @@ public class Ball extends Objects {
 
                 if(this.getBoundsRight().intersects(barrier.getBounds())) {
                     velX = -velX;
-                    this.x = barrier.getX() - 16;
+                    this.x = barrier.getX() - 16 - 4;
                 }
                 if(this.getBoundsLeft().intersects(barrier.getBounds())) {
                     velX = -velX;
-                    this.x = barrier.getX() + 32;
+                    this.x = barrier.getX() + 32 + 4;
                 }
                 if(this.getBoundsTop().intersects(barrier.getBounds())) {
                     velY = -velY;
-                    this.y = barrier.getY() + 32;
+                    this.y = barrier.getY() + 32 + 4;
                 }
                 if(this.getBoundsBottom().intersects(barrier.getBounds())) {
                     velY = -velY;
-                    this.y = barrier.getY() - 16;
+                    this.y = barrier.getY() - 16 - 4;
                 }
             }
 
@@ -127,21 +127,21 @@ public class Ball extends Objects {
 
     @Override
     public Rectangle2D getBoundsTop() {
-        return new Rectangle2D.Double(x + 5, y, width - 10, height / 2);
+        return new Rectangle2D.Double(x + 5, y - 4, width - 10, height / 2);
     }
 
     @Override
     public Rectangle2D getBoundsBottom() {
-        return new Rectangle2D.Double(x + 5, y + width / 2, width - 10, height / 2);
+        return new Rectangle2D.Double(x + 5, y + width / 2 + 4, width - 10, height / 2);
     }
 
     @Override
     public Rectangle2D getBoundsLeft() {
-        return new Rectangle2D.Double(x, y + 3, width - 11, height - 6);
+        return new Rectangle2D.Double(x - 4, y + 2, width - 11, height - 4);
     }
 
     @Override
     public Rectangle2D getBoundsRight() {
-        return new Rectangle2D.Double(x + 11, y + 3, width - 11, height - 6);
+        return new Rectangle2D.Double(x + 11 + 4, y + 2, width - 11, height - 4);
     }
 }
