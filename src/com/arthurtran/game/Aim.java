@@ -9,21 +9,22 @@ public class Aim extends Objects {
 
     private Runner runner;
 
-    public static double angle = 0;
-    private double angleRad;
-    private double length = 100;
-    private double lineWidth = 3;
-    private double offset = 8;
+    public static double angle = 0; //The angle in degrees
+    private double angleRad; //The angle in radians (Gets calculated in the constructor)
+    private double length = 100; //Length of the aiming line
+    private double lineWidth = 3; //Width of the aim line
+    private double offset = 8; //So the ball is 16x16 which means the line should be drawn in the center
 
-    public static double x2, y2;
+    public static double x2, y2; //The second points of the line
 
     public Aim(double x, double y, Enum ID, Runner runner) {
         super(x, y, ID);
 
         this.runner = runner;
 
-        angleRad = Math.toRadians(-angle);
+        angleRad = Math.toRadians(-angle); //Calculates the angle to radians
 
+        //Calculates the second x and y of the line
         x2 = offset + x + (length * Math.cos(angleRad));
         y2 = offset + y + (length * Math.sin(angleRad));
     }

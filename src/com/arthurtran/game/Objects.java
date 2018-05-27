@@ -6,9 +6,9 @@ import java.awt.geom.Rectangle2D;
 
 public abstract class Objects {
 
-    protected double x, y;
-    protected double velX, velY;
-    protected Enum ID;
+    protected double x, y; //The x and y positions of the object
+    protected double velX, velY; //The velocities of the object
+    protected Enum ID; //The IDs of the objects
 
     public Objects(double x, double y, Enum ID) {
         this.x = x;
@@ -18,6 +18,8 @@ public abstract class Objects {
 
     protected abstract void draw(GraphicsContext g);
     protected abstract void update();
+
+    //Used for collisions
     protected abstract Rectangle2D getBounds();
     protected abstract Rectangle2D getBoundsTop();
     protected abstract Rectangle2D getBoundsBottom();

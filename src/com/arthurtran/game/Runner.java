@@ -19,36 +19,40 @@ public class Runner extends Application {
 
     // TODO: 5/22/2018
     //implement strength
+    //More maps
+    //textures
+    //aesthetics
 
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
-    private AudioPlayer audio;
+    private AudioPlayer audio; //also from the library I wrote - Arthur
     private MiniMap miniMap;
 
-    private double windowWidth, windowHeight;
-    private double ballX, ballY;
+    private double windowWidth, windowHeight; //the width and height of the window
+    private double ballX, ballY; //used to hold the ball's position... could have used POINT but heard they were slow
 
-    private int par;
-    private int stroke;
-    private int scoreCurrent = 0;
-    private int scoreFinal = 0;
-    private int hole = 1;
+    private int par; //specifies the par on the hole
+    private int stroke; //keeps track of current stroke
+    private int scoreCurrent = 0; //gets the score of the current hole
+    private int scoreFinal = 0; //score of all holes combined
+    private int hole = 1; //specifies which hole is being played
 
-    private boolean shoot = false;
+    private boolean shoot = false; //used to get the ball's velocity once per shot
     private boolean getVelocity = true; //used to get the velocity once per shot
-    private boolean ballMoving = false;
-    private boolean canShoot = false;
+    private boolean ballMoving = false; //is the ball moving or not
+    private boolean canShoot = false; //if able to shoot
+    private boolean addMiniMapOnce = true; //used to only create a minimap once per level
 
     private BufferedImage map1;
     private BufferedImage map2;
 
-    private LinkedList<Objects> objects = new LinkedList<>();
+    private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
-    public static enum ID {
+    public static enum ID { //Used enumerations to give unique IDs to each object
         ball, barrier, obstacle, aim, hole
     }
 
-    public static enum STATE {
+    public static enum STATE { //Used to specify the state of the game
         menu, game, end
     }
 
@@ -87,9 +91,6 @@ public class Runner extends Application {
         stage.setResizable(false); //strange bug with this method *cough* Swing is better *cough*
         stage.sizeToScene(); //fixed with this
 
-//        objects.add(new Ball(windowWidth / 2 - 8, windowHeight / 2 - 8, ID.ball, this));
-//        objects.add(new Aim(ballX, ballY, ID.aim, this)); //7 is due to line width
-
         new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -103,6 +104,10 @@ public class Runner extends Application {
         stage.show();
     }
 
+    /**
+     * Draws everything
+     * @param g - GraphicsContext
+     */
     public void draw(GraphicsContext g) {
         if(state == STATE.menu) {
             g.setFill(Color.gray(0));
@@ -111,6 +116,7 @@ public class Runner extends Application {
             g.setFill(Color.gray(.5));
             g.fillRect(0, 0, windowWidth, windowHeight);
 
+            //everything between gets translated based on camera position//
             g.translate(-camera.getX(), -camera.getY());
 
             for (Objects ob : objects) {
@@ -118,37 +124,51 @@ public class Runner extends Application {
             }
 
             g.translate(camera.getX(), camera.getY());
+            ///////////////////////////////////////////////////////////////////
 
             miniMap.draw(g);
+
         } else if(state == STATE.end) {
             g.fillRect(0, 0, windowWidth, windowHeight);
             g.strokeText(Integer.toString(scoreFinal), 400, 400);
         }
     }
 
+    /**
+     * Updates all the game objects
+     */
     public void update() {
-        for(int i = 0; i < objects.size(); i++) {
+        for(int i = 0; i < objects.size(); i++) { //Goes through the list of game objects
             if (objects.get(i).getID() == ID.ball) {
-                camera.update(objects.get(i));
+                camera.update(objects.get(i)); //Updates the camera based on ball position
             }
-            objects.get(i).update();
+            objects.get(i).update(); //Updates the game object
         }
 
         getHole();
 
-        if (hole == 1) this.miniMap = new MiniMap(map1, this);
-        if (hole == 2) this.miniMap = new MiniMap(map2, this);
+        if(addMiniMapOnce) {
+            if (hole == 1) this.miniMap = new MiniMap(map1, this);
+            if (hole == 2) this.miniMap = new MiniMap(map2, this);
+            addMiniMapOnce = false;
+        }
 
-        scoreCurrent = stroke - par;
+        scoreCurrent = stroke - par; //calculates the score of the current hole
 
         updateAim();
     }
 
+    /**
+     * sets the par of each hole
+     */
     public void getHole() {
         if(hole == 1) par = 3;
         if(hole == 2) par = 5;
     }
 
+    /**
+     * Removes the aiming when shot and updates the position when stopped
+     */
     public void updateAim() {
         if(!ballMoving) {
             canShoot = true;
@@ -163,6 +183,10 @@ public class Runner extends Application {
         }
     }
 
+    /**
+     * Keeps all the key input stuff in one method
+     * @param canvas - The canvas
+     */
     public void keyInput(Canvas canvas) {
         canvas.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.SPACE) {
@@ -205,6 +229,9 @@ public class Runner extends Application {
         });
     }
 
+    /**
+     * Restarts the level
+     */
     public void restart() {
         objects.clear();
 
@@ -212,16 +239,24 @@ public class Runner extends Application {
         if(hole == 2) loadMap(map2);
     }
 
+    /**
+     * Restarts the game
+     */
     public void restartGame() {
         hole = 1;
         restart();
     }
 
+    /**
+     * Goes to next level
+     */
     public void nextLevel() {
         objects.clear();
 
         getScoreFinal();
         stroke = 0;
+
+        addMiniMapOnce = true;
 
         hole++;
         switch(hole) {
@@ -230,15 +265,22 @@ public class Runner extends Application {
         }
     }
 
+    /**
+     * Gets the final score
+     */
     public void getScoreFinal() {
         scoreFinal += scoreCurrent;
     }
 
+    /**
+     * Looks through every pixel in the buffered image and adds objects based on pixel color.
+     * @param map - A BufferedImage
+     */
     public void loadMap(BufferedImage map) {
         for(int y = 0; y < map.getHeight(); y++) {
             for(int x = 0; x < map.getWidth(); x++) {
                 int color = map.getRGB(x, y);
-                int red = (color >> 16) & 0xff;
+                int red = (color >> 16) & 0xff; //I think this is a bitwise shift operator
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;
 
@@ -292,6 +334,9 @@ public class Runner extends Application {
         this.ballMoving = moving;
     }
 
+    /**
+     * @return True if the hole is the last hole false otherwise
+     */
     public boolean getEnd() {
         if(hole == 2) return true;
         return false;

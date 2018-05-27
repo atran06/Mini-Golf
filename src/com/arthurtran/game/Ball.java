@@ -51,13 +51,14 @@ public class Ball extends Objects {
 
         collision();
 
-        if(runner.getShoot())  {
+        if(runner.getShoot()) {
             if(runner.getGetVelocity()) {
                 velX = (Aim.x2 - x - 7) / speed;
                 velY = (Aim.y2 - y - 7) / speed;
                 runner.setGetVelocity(false);
             }
         }
+
         if(Math.abs(velX) < 0.01 || Math.abs(velY) < 0.001 ) {
             velX = 0;
             velY = 0;
@@ -74,8 +75,13 @@ public class Ball extends Objects {
         y += velY;
     }
 
+    /**
+     * Uses the list of objects in the Runner and the getBounds methods of each Object to detect collisions
+     */
     public void collision() {
         for(int i = 0; i < runner.getObjects().size(); i++) {
+
+            //Checks if the object is a Barrier
             if(runner.getObjects().get(i).getID() == Runner.ID.barrier) {
                 Objects barrier = runner.getObjects().get(i);
 
@@ -96,6 +102,8 @@ public class Ball extends Objects {
                     this.y = barrier.getY() - 16;
                 }
             }
+
+            //Checks if the object is the hole
             if(runner.getObjects().get(i).getID() == Runner.ID.hole) {
                 Objects hole = runner.getObjects().get(i);
 

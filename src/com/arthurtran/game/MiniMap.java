@@ -19,6 +19,10 @@ public class MiniMap {
         this.runner = runner;
     }
 
+    /**
+     * Goes through every pixel in the map and draws mini objects based on the pixel color
+     * @param g - GraphicsContext
+     */
     public void draw(GraphicsContext g) {
         g.setFill(Color.gray(1, .5));
         g.fillRect(x, y, width, height);

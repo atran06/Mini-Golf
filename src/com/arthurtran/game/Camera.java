@@ -15,6 +15,7 @@ public class Camera {
         x += ((object.getX() - x) - 800 / 2 - 8) * 0.05; //tweening algorithm
         y += ((object.getY() - y) - 800 / 2 - 8) * 0.05;
 
+        //Stops the camera if it's greater than the size of the map
         if(x >= 800) x = 800;
         if(x <= 0) x = 0;
         if(y >= 800) y = 800;
