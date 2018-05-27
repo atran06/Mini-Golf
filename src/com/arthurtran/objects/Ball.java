@@ -34,19 +34,19 @@ public class Ball extends Objects {
 
         //getBoundsTop
         g.setStroke(Color.rgb(255, 0, 0));
-        g.strokeRect(x + 5, y - 4, width - 10, height / 2);
+        g.strokeRect(x, y, width, height / 2);
 
         //getBoundsBottom
         g.setStroke(Color.rgb(0, 255, 0));
-        g.strokeRect(x + 5, y + width / 2 + 4, width - 10, height / 2);
+        g.strokeRect(x, y + height / 2, width, height / 2);
 
         //getBoundsRight
         g.setStroke(Color.rgb(0, 0, 255));
-        g.strokeRect(x + 11 + 4, y + 2, width - 11, height - 4);
+        g.strokeRect(x + width / 2, y, width / 2, height);
 
         //getBoundsLeft
         g.setStroke(Color.gray(0));
-        g.strokeRect(x - 4, y + 2, width - 11, height - 4);
+        g.strokeRect(x, y, width / 2, height);
     }
 
     @Override
