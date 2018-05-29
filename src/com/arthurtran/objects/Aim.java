@@ -1,7 +1,7 @@
 package com.arthurtran.objects;
 
-import com.arthurtran.game.Objects;
 import com.arthurtran.game.Game;
+import com.arthurtran.game.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
