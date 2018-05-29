@@ -14,6 +14,7 @@ public class Ball extends Objects {
 
     private double width, height;
     private double speed = 5; //the higher the 'speed' the slower the ball
+    private double bounceBack = 0.7;
 
     public Ball(double x, double y, Enum ID, Runner runner) {
         super(x, y, ID);
@@ -89,19 +90,19 @@ public class Ball extends Objects {
                 Objects barrier = runner.getObjects().get(i);
 
                 if(this.getBoundsRight().intersects(barrier.getBounds())) {
-                    velX = -velX;
+                    velX = -velX * bounceBack;
                     this.x = barrier.getX() - 16;
                 }
                 if(this.getBoundsLeft().intersects(barrier.getBounds())) {
-                    velX = -velX;
+                    velX = -velX * bounceBack;
                     this.x = barrier.getX() + 32;
                 }
                 if(this.getBoundsTop().intersects(barrier.getBounds())) {
-                    velY = -velY;
+                    velY = -velY * bounceBack;
                     this.y = barrier.getY() + 32;
                 }
                 if(this.getBoundsBottom().intersects(barrier.getBounds())) {
-                    velY = -velY;
+                    velY = -velY * bounceBack;
                     this.y = barrier.getY() - 16;
                 }
             }
