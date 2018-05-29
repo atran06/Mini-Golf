@@ -1,6 +1,6 @@
 package com.arthurtran.map;
 
-import com.arthurtran.game.Runner;
+import com.arthurtran.game.Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -9,14 +9,14 @@ import java.awt.image.BufferedImage;
 public class MiniMap {
 
     private BufferedImage map;
-    private Runner runner;
+    private Game game;
 
     private int x = 800 - 200, y = 0;
     private int width = 200, height = 200;
 
-    public MiniMap(BufferedImage map, Runner runner) {
+    public MiniMap(BufferedImage map, Game game) {
         this.map = map;
-        this.runner = runner;
+        this.game = game;
     }
 
     /**
@@ -49,7 +49,7 @@ public class MiniMap {
         }
 
         g.setFill(Color.rgb(255, 0, 0));
-        g.fillRect((runner.getBallX() / 32) * 4 + (600), runner.getBallY() / 32 * 4, 4, 4);
+        g.fillRect((game.getBallX() / 32) * 4 + (600), game.getBallY() / 32 * 4, 4, 4);
     }
 
     public void update() {

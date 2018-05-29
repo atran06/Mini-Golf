@@ -1,6 +1,6 @@
 package com.arthurtran.map;
 
-import com.arthurtran.game.Runner;
+import com.arthurtran.game.Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -9,14 +9,14 @@ import java.awt.image.BufferedImage;
 public class FullMap {
 
     private BufferedImage map;
-    private Runner runner;
+    private Game game;
 
     private int x = 0, y = 0;
     private int width = 800, height = 800;
 
-    public FullMap(BufferedImage map, Runner runner) {
+    public FullMap(BufferedImage map, Game game) {
         this.map = map;
-        this.runner = runner;
+        this.game = game;
     }
 
     /**
@@ -49,7 +49,7 @@ public class FullMap {
         }
 
         g.setFill(Color.rgb(255, 0, 0));
-        g.fillRect((runner.getBallX() / 32) * 16, runner.getBallY() / 32 * 16, 16, 16);
+        g.fillRect((game.getBallX() / 32) * 16, game.getBallY() / 32 * 16, 16, 16);
     }
 
     public void update() {

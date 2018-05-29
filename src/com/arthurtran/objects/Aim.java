@@ -1,7 +1,7 @@
 package com.arthurtran.objects;
 
 import com.arthurtran.game.Objects;
-import com.arthurtran.game.Runner;
+import com.arthurtran.game.Game;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -9,7 +9,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Aim extends Objects {
 
-    private Runner runner;
+    private Game game;
 
     public static double angle = 0; //The angle in degrees
     private double angleRad; //The angle in radians (Gets calculated in the constructor)
@@ -19,10 +19,10 @@ public class Aim extends Objects {
 
     public static double x2, y2; //The second points of the line
 
-    public Aim(double x, double y, Enum ID, Runner runner) {
+    public Aim(double x, double y, Enum ID, Game game) {
         super(x, y, ID);
 
-        this.runner = runner;
+        this.game = game;
 
         angleRad = Math.toRadians(-angle); //Calculates the angle to radians
 

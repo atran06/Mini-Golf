@@ -1,8 +1,7 @@
 package com.arthurtran.objects;
 
+import com.arthurtran.game.Game;
 import com.arthurtran.game.Objects;
-import com.arthurtran.game.Runner;
-import com.arthurtran.objects.Aim;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -10,16 +9,16 @@ import java.awt.geom.Rectangle2D;
 
 public class Ball extends Objects {
 
-    private Runner runner;
+    private Game game;
 
     private double width, height;
     private double speed = 5; //the higher the 'speed' the slower the ball
     private double bounceBack = 0.7;
 
-    public Ball(double x, double y, Enum ID, Runner runner) {
+    public Ball(double x, double y, Enum ID, Game game) {
         super(x, y, ID);
 
-        this.runner = runner;
+        this.game = game;
         this.width = 16;
         this.height = 16;
     }
@@ -55,39 +54,39 @@ public class Ball extends Objects {
 
         collision();
 
-        if(runner.getShoot()) {
-            if(runner.getGetVelocity()) {
+        if(game.getShoot()) {
+            if(game.getGetVelocity()) {
                 velX = (Aim.x2 - x - 7) / speed;
                 velY = (Aim.y2 - y - 7) / speed;
-                runner.setGetVelocity(false);
+                game.setGetVelocity(false);
             }
         }
 
         if(Math.abs(velX) < 0.01 || Math.abs(velY) < 0.001 ) {
             velX = 0;
             velY = 0;
-            runner.setBallMoving(false);
+            game.setBallMoving(false);
         } else {
             velX *= .95;
             velY *= .95;
         }
 
-        runner.setBallX(x);
-        runner.setBallY(y);
+        game.setBallX(x);
+        game.setBallY(y);
 
         x += velX;
         y += velY;
     }
 
     /**
-     * Uses the list of objects in the Runner and the getBounds methods of each Object to detect collisions
+     * Uses the list of objects in the Game and the getBounds methods of each Object to detect collisions
      */
     public void collision() {
-        for(int i = 0; i < runner.getObjects().size(); i++) {
+        for(int i = 0; i < game.getObjects().size(); i++) {
 
             //Checks if the object is a Barrier
-            if(runner.getObjects().get(i).getID() == Runner.ID.barrier) {
-                Objects barrier = runner.getObjects().get(i);
+            if(game.getObjects().get(i).getID() == Game.ID.barrier) {
+                Objects barrier = game.getObjects().get(i);
 
                 if(this.getBoundsRight().intersects(barrier.getBounds())) {
                     velX = -velX * bounceBack;
@@ -108,14 +107,14 @@ public class Ball extends Objects {
             }
 
             //Checks if the object is the hole
-            if(runner.getObjects().get(i).getID() == Runner.ID.hole) {
-                Objects hole = runner.getObjects().get(i);
+            if(game.getObjects().get(i).getID() == Game.ID.hole) {
+                Objects hole = game.getObjects().get(i);
 
-                if(this.getBounds().intersects(hole.getBounds()) && runner.getEnd()) {
-                    runner.nextLevel();
-                    runner.state = Runner.STATE.end;
+                if(this.getBounds().intersects(hole.getBounds()) && game.getEnd()) {
+                    game.nextLevel();
+                    game.state = Game.STATE.end;
                 } else if(this.getBounds().intersects(hole.getBounds())) {
-                    runner.nextLevel();
+                    game.nextLevel();
                 }
             }
         }

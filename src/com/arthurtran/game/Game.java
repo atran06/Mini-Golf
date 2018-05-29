@@ -1,12 +1,5 @@
 package com.arthurtran.game;
 
-/*
-Mini Golf Final Project
-
-Arthur Tran, Michael Crowe, Danny Padilla, Parth Mehta
-Period 5, 6
- */
-
 import com.arthurtran.Arch2D.main.AudioPlayer;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import com.arthurtran.map.FullMap;
@@ -28,7 +21,7 @@ import javafx.stage.Stage;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
-public class Runner extends Application {
+public class Game extends Application {
 
     // TODO: 5/22/2018
     //implement strength
@@ -75,7 +68,7 @@ public class Runner extends Application {
 
     public STATE state = STATE.menu;
 
-    public Runner() {
+    public Game() {
         windowWidth = 800;
         windowHeight = 800;
 
@@ -366,9 +359,5 @@ public class Runner extends Application {
     public boolean getEnd() {
         if(hole == 2) return true;
         return false;
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
