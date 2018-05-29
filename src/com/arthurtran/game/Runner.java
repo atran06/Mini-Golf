@@ -34,6 +34,9 @@ public class Runner extends Application {
     //implement strength
     //More maps
     //textures
+    //sound effects
+    //menu screen
+    //end screen
     //aesthetics
 
     private Camera camera;
