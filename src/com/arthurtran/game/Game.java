@@ -35,6 +35,7 @@ public class Game extends Application {
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
     private AudioPlayer audio; //also from the library I wrote - Arthur
+    private AudioPlayer ballHit;
     private MiniMap miniMap;
     private FullMap fullMap;
 
@@ -80,6 +81,8 @@ public class Game extends Application {
 
         audio = new AudioPlayer("/music/golfOST2.wav", true);
         audio.setVolume(0.2f);
+
+        ballHit = new AudioPlayer("/sounds/hit.wav", false);
     }
 
     @Override
@@ -207,6 +210,7 @@ public class Game extends Application {
     public void keyInput(Canvas canvas) {
         canvas.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.SPACE) {
+                ballHit.play();
                 if(canShoot) {
                     for(int i = 0; i < objects.size(); i++) {
                         if(objects.get(i).getID() == ID.aim) {
