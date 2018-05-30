@@ -13,11 +13,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
@@ -56,6 +58,7 @@ public class Game extends Application {
 
     private BufferedImage map1;
     private BufferedImage map2;
+    private Image menu;
 
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
@@ -76,6 +79,7 @@ public class Game extends Application {
         this.camera = new Camera(0, 0);
 
         loader = new BufferedImageLoader();
+        menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
         map1 = loader.imageLoader("maps/map2.png");
         map2 = loader.imageLoader("maps/map1v2.png");
 
@@ -121,8 +125,7 @@ public class Game extends Application {
      */
     public void draw(GraphicsContext g) {
         if(state == STATE.menu) {
-            g.setFill(Color.gray(0));
-            g.fillRect(0, 0, windowWidth, windowHeight);
+            g.drawImage(menu, 0, 0);
         } else if(state == STATE.game) {
             g.setFill(Color.gray(.5));
             g.fillRect(0, 0, windowWidth, windowHeight);
@@ -152,7 +155,7 @@ public class Game extends Application {
     public void update() {
         for(int i = 0; i < objects.size(); i++) { //Goes through the list of game objects
             if (objects.get(i).getID() == ID.ball) {
-                camera.update(objects.get(i)); //Updates the camera based on ball position
+                camera.update(objects.get(i)); //Updates the camera based on f position
             }
             objects.get(i).update(); //Updates the game object
         }
