@@ -13,7 +13,7 @@ public class Ball extends Objects {
     private Game game;
 
     private double width, height;
-    public static double speed = 2; //the higher the 'speed' the slower the ball. 2-100 is the range
+    public static double speed = 3; //the higher the 'speed' the slower the ball. 2-100 is the range
 
     public Ball(double x, double y, Enum ID, Game game) {
         super(x, y, ID);

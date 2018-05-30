@@ -228,8 +228,8 @@ public class Game extends Application {
                 Aim.angle -= 2;
             }
             if(e.getCode() == KeyCode.W) {
-                if(Ball.speed <= 2) {
-                    Ball.speed = 2;
+                if(Ball.speed <= 3) {
+                    Ball.speed = 3;
                 } else {
                     Ball.speed -= .2;
                 }
