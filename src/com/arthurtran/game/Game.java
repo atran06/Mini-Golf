@@ -24,6 +24,7 @@ import java.util.LinkedList;
 public class Game extends Application {
 
     // TODO: 5/22/2018
+    //add menu
     //implement strength
     //More maps
     //textures
