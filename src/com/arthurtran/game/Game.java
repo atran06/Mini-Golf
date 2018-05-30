@@ -49,6 +49,7 @@ public class Game extends Application {
     private int scoreCurrent = 0; //gets the score of the current hole
     private int scoreFinal = 0; //score of all holes combined
     private int hole = 1; //specifies which hole is being played
+    private int strength = 100;
 
     private boolean shoot = false; //used to get the ball's velocity once per shot
     private boolean getVelocity = true; //used to get the velocity once per shot
@@ -140,6 +141,13 @@ public class Game extends Application {
             g.translate(camera.getX(), camera.getY());
             ///////////////////////////////////////////////////////////////////
 
+            g.setFill(Color.rgb(0, 255, 0));
+            g.fillRect(0, 150, 20, 100 * 5);
+            g.setFill(Color.gray(0));
+            g.fillRect(0, 150, 20, strength * 5);
+            g.setStroke(Color.gray(0));
+            g.strokeRect(0, 150, 20, 100 * 5);
+
             miniMap.draw(g);
 //            fullMap.draw(g);
 
@@ -159,6 +167,8 @@ public class Game extends Application {
             }
             objects.get(i).update(); //Updates the game object
         }
+
+        strength = (int) (((Ball.speed - 3) / 7) * 100);
 
         getHole();
 
@@ -232,8 +242,8 @@ public class Game extends Application {
                 Aim.angle -= 2;
             }
             if(e.getCode() == KeyCode.W) {
-                if(Ball.speed <= 2) {
-                    Ball.speed = 2;
+                if(Ball.speed <= 3) {
+                    Ball.speed = 3;
                 } else {
                     Ball.speed -= .2;
                 }
