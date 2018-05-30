@@ -60,7 +60,6 @@ public class Game extends Application {
     private BufferedImage map1;
     private BufferedImage map2;
     private Image menu;
-    private Image end;
 
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
@@ -82,7 +81,6 @@ public class Game extends Application {
 
         loader = new BufferedImageLoader();
         menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
-        end = new Image(getClass().getResourceAsStream("/gameImages/endScreen.png"));
         map1 = loader.imageLoader("maps/map2.png");
         map2 = loader.imageLoader("maps/map1v2.png");
 
@@ -129,7 +127,6 @@ public class Game extends Application {
     public void draw(GraphicsContext g) {
         if(state == STATE.menu) {
             g.drawImage(menu, 0, 0);
-
         } else if(state == STATE.game) {
             g.setFill(Color.gray(.5));
             g.fillRect(0, 0, windowWidth, windowHeight);
@@ -155,8 +152,7 @@ public class Game extends Application {
 //            fullMap.draw(g);
 
         } else if(state == STATE.end) {
-            g.drawImage(end,0, 0);
-            //g.fillRect(0, 0, windowWidth, windowHeight);
+            g.fillRect(0, 0, windowWidth, windowHeight);
             g.strokeText(Integer.toString(scoreFinal), 400, 400);
         }
     }
