@@ -227,6 +227,20 @@ public class Game extends Application {
             if(e.getCode() == KeyCode.DOWN) {
                 Aim.angle -= 2;
             }
+            if(e.getCode() == KeyCode.W) {
+                if(Ball.speed <= 2) {
+                    Ball.speed = 2;
+                } else {
+                    Ball.speed -= .2;
+                }
+            }
+            if(e.getCode() == KeyCode.S) {
+                if(Ball.speed >= 10) {
+                    Ball.speed = 10;
+                } else {
+                    Ball.speed += .2;
+                }
+            }
 
             //Used for testing the states of the game
             if(e.getCode() == KeyCode.DIGIT1) {
