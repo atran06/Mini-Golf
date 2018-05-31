@@ -413,7 +413,7 @@ public class Game extends Application implements Utilities {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
                 if(green == 255 && red == 0 && blue == 255) {
-//                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
+                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
                 }
             }
         }
