@@ -49,6 +49,7 @@ public class Game extends Application implements Utilities {
     private boolean ballMoving = false; //is the ball moving or not
     private boolean canShoot = false; //if able to shoot
     private boolean addMiniMapOnce = true; //used to only create a minimap once per level
+    private boolean showMap = false;
 
     private BufferedImage map1;
     private BufferedImage map2;
@@ -157,12 +158,14 @@ public class Game extends Application implements Utilities {
             g.strokeRect(0, 150, 20, 100 * 5);
 
             miniMap.draw(g);
-//            fullMap.draw(g);
+
+            if(showMap) fullMap.draw(g);
 
             g.setFont(new Font("arial", 25));
             g.setFill(Color.gray(1));
             g.fillText("Par: " + Integer.toString(par), 600, 220);
             g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
+            g.fillText("Hole: " + Integer.toString(hole), 10, 50);
 
         } else if(state == STATE.end) {
             g.drawImage(end, 0, 0);
@@ -284,6 +287,10 @@ public class Game extends Application implements Utilities {
                     } else {
                         Ball.speed -= .2;
                     }
+                }
+                if(e.getCode() == KeyCode.M) {
+                    if(showMap) showMap = false;
+                    else showMap = true;
                 }
             }
             if(e.getCode() == KeyCode.S) {
@@ -467,7 +474,7 @@ public class Game extends Application implements Utilities {
      * @return True if the hole is the last hole false otherwise
      */
     public boolean getEnd() {
-        if(hole == 6) return true;
+        if(hole == 5) return true;
         return false;
     }
 }

@@ -24,7 +24,7 @@ public class MiniMap {
      * @param g - GraphicsContext
      */
     public void draw(GraphicsContext g) {
-        g.setFill(Color.gray(1, .5));
+        g.setFill(Color.gray(0, .5));
         g.fillRect(x, y, width, height);
         g.setStroke(Color.gray(0));
         g.setLineWidth(1);
@@ -38,7 +38,7 @@ public class MiniMap {
                 int blue = (color) & 0xff;
 
                 if(red == 255 && blue == 0 && green == 0) {
-                    g.setFill(Color.gray(0));
+                    g.setFill(Color.gray(1));
                     g.fillRect((x * 4) + (800 - 200), y * 4, 4, 4);
                 }
                 if(green == 255 && red == 0 && blue == 0) {

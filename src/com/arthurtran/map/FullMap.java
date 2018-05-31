@@ -37,11 +37,11 @@ public class FullMap {
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;
 
-                if(red == 255) {
+                if(red == 255 && green == 0 && blue == 0) {
                     g.setFill(Color.gray(0));
                     g.fillRect(x * 16, y * 16, 16, 16);
                 }
-                if(green == 255) {
+                if(green == 255 && red == 0 && blue == 0) {
                     g.setFill(Color.rgb(0, 255, 255));
                     g.fillRect(x * 16, y * 16, 16, 16);
                 }
