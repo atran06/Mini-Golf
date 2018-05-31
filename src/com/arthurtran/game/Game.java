@@ -167,6 +167,12 @@ public class Game extends Application implements Utilities {
             g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
             g.fillText("Hole: " + Integer.toString(hole), 10, 50);
 
+            if(scoreFinal == 0) {
+                g.fillText("Total Score: E", 10, 700);
+            } else {
+                g.fillText("Total Score: " + Integer.toString(scoreFinal), 10, 700);
+            }
+
         } else if(state == STATE.end) {
             g.drawImage(end, 0, 0);
             //g.fillRect(0, 0, windowWidth, windowHeight);

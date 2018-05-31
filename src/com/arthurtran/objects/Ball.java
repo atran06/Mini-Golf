@@ -73,8 +73,8 @@ public class Ball extends Objects {
             velY = 0;
             game.setBallMoving(false);
         } else {
-            velX *= .95;
-            velY *= .95;
+            velX *= .97;
+            velY *= .97;
         }
 
         game.setBallX(x);
