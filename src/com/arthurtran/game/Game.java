@@ -57,7 +57,7 @@ public class Game extends Application implements Utilities {
     private BufferedImage map2;
     private Image menu;
     private Image end;
-    private Image wood;
+    private Image controls;
 
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
@@ -66,7 +66,7 @@ public class Game extends Application implements Utilities {
     }
 
     public static enum STATE { //Used to specify the state of the game
-        menu, game, end
+        menu, game, end, controls
     }
 
     public STATE state = STATE.menu;
@@ -78,10 +78,12 @@ public class Game extends Application implements Utilities {
         this.camera = new Camera(0, 0);
 
         loader = new BufferedImageLoader();
-        menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
-        end = new Image(getClass().getResourceAsStream("/gameImages/endScreen.png"));
         map1 = loader.imageLoader("maps/map2.png");
         map2 = loader.imageLoader("maps/map1v2.png");
+
+        menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
+        end = new Image(getClass().getResourceAsStream("/gameImages/endScreen.png"));
+        controls = new Image(getClass().getResourceAsStream("/gameImages/controls.png"));
 
         audio = new AudioPlayer("/music/golfOST2.wav", true);
         audio.setVolume(0.2f);
@@ -158,7 +160,7 @@ public class Game extends Application implements Utilities {
             g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
 
         } else if(state == STATE.end) {
-            g.drawImage(end,0, 0);
+            g.drawImage(end, 0, 0);
             //g.fillRect(0, 0, windowWidth, windowHeight);
             g.setFont(new Font("arial", 50));
             if(scoreFinal == 0) {
@@ -166,6 +168,8 @@ public class Game extends Application implements Utilities {
             } else {
                 g.fillText("Score: " + Integer.toString(scoreFinal), windowWidth / 2 - 100, 400);
             }
+        } else if(state == STATE.controls) {
+            g.drawImage(controls, 0, 0);
         }
     }
 
@@ -292,14 +296,28 @@ public class Game extends Application implements Utilities {
         canvas.setOnMouseClicked(e -> {
             System.out.println(e.getX() + " " + e.getY());
 
-            if(e.getX() > 320 && e.getX() < 470) {
-                if(e.getY() > 240 && e.getY() < 280) {
-                    state = STATE.game;
+            if(state == STATE.menu) {
+                if(e.getX() > 320 && e.getX() < 470) {
+                    if(e.getY() > 240 && e.getY() < 280) {
+                        state = STATE.game;
+                    }
+                }
+                if(e.getX() > 273 && e.getX() < 526) {
+                    if(e.getY() > 330 && e.getY() < 370) {
+                        state = STATE.controls;
+                    }
+                }
+                if(e.getX() > 262 && e.getX() < 550) {
+                    if(e.getY() > 425 && e.getY() < 458) {
+                        System.exit(1);
+                    }
                 }
             }
-            if(e.getX() > 265 && e.getX() < 545) {
-                if(e.getY() > 359 && e.getY() < 390) {
-                    System.exit(1);
+            if(state == STATE.controls) {
+                if(e.getX() > 630 && e.getX() < 779) {
+                    if(e.getY() > 25 && e.getY() < 71) {
+                        state = STATE.menu;
+                    }
                 }
             }
         });
