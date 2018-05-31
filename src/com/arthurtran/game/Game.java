@@ -185,6 +185,10 @@ public class Game extends Application implements Utilities {
                 camera.update(objects.get(i)); //Updates the camera based on f position
             }
             objects.get(i).update(); //Updates the game object
+
+            if(!isOnScreen(objects.get(i))) {
+                objects.remove(objects.get(i));
+            }
         }
 
         strength = (int) (((Ball.speed - 3) / 7) * 100);
@@ -417,6 +421,15 @@ public class Game extends Application implements Utilities {
                 }
             }
         }
+    }
+
+    public boolean isOnScreen(Objects ob) {
+        if(ob.getX() > camera.getX() && ob.getX() < camera.getX() + windowWidth) {
+            if(ob.getY() > camera.getY() && ob.getY() < camera.getY() + windowHeight) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public LinkedList<Objects> getObjects() {
