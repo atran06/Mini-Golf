@@ -28,14 +28,8 @@ import java.util.LinkedList;
 public class Game extends Application implements Utilities {
 
     // TODO: 5/22/2018
-    //add menu
-    //implement strength
-    //More maps
-    //textures
-    //sound effects
-    //menu screen
-    //end screen
-    //aesthetics
+    //fix mouse input in menu
+    //implement new maps
 
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
@@ -133,7 +127,7 @@ public class Game extends Application implements Utilities {
             g.drawImage(menu, 0, 0);
 
         } else if(state == STATE.game) {
-            g.setFill(Color.gray(.5));
+            g.setFill(Color.rgb(0,120,0));
             g.fillRect(0, 0, windowWidth, windowHeight);
 
             //everything between gets translated based on camera position//
