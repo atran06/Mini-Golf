@@ -363,8 +363,8 @@ public class Game extends Application implements Utilities {
                     objects.add(new Barrier(x * 32, y * 32, ID.barrier));
                 }
                 if(blue == 255) {
-                    objects.add(new Ball(x * 32, y * 32, ID.ball, this));
                     objects.add(new Aim(ballX, ballY, ID.aim, this));
+                    objects.add(new Ball(x * 32, y * 32, ID.ball, this));
                 }
                 if(green == 255) {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));

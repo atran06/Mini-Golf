@@ -4,6 +4,7 @@ import com.arthurtran.game.Objects;
 import com.arthurtran.main.Runner;
 import com.arthurtran.game.Game;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.awt.geom.Rectangle2D;
@@ -11,6 +12,7 @@ import java.awt.geom.Rectangle2D;
 public class Ball extends Objects {
 
     private Game game;
+    private Image ballTexture;
 
     private double width, height;
     public static double speed = 5; //the higher the 'speed' the slower the ball. 2-100 is the range
@@ -21,32 +23,36 @@ public class Ball extends Objects {
         this.game = game;
         this.width = 16;
         this.height = 16;
+
+        ballTexture = new Image(getClass().getResourceAsStream("/textures/ballSmiley.png"));
     }
 
     @Override
     public void draw(GraphicsContext g) {
-        g.setFill(Color.gray(1));
-//        g.fillOval(x, y, width, height);
-        g.setStroke(Color.gray(1));
-//        g.strokeOval(x, y, width, height);
+//        g.setFill(Color.gray(1));
+////        g.fillOval(x, y, width, height);
+//        g.setStroke(Color.gray(1));
+////        g.strokeOval(x, y, width, height);
+//
+//        g.setLineWidth(1);
+//
+//        //getBoundsTop
+//        g.setStroke(Color.rgb(255, 0, 0));
+//        g.strokeRect(x, y, width, height / 2);
+//
+//        //getBoundsBottom
+//        g.setStroke(Color.rgb(0, 255, 0));
+//        g.strokeRect(x, y + height / 2, width, height / 2);
+//
+//        //getBoundsRight
+//        g.setStroke(Color.rgb(0, 0, 255));
+//        g.strokeRect(x + width / 2, y, width / 2, height);
+//
+//        //getBoundsLeft
+//        g.setStroke(Color.gray(0));
+//        g.strokeRect(x, y, width / 2, height);
 
-        g.setLineWidth(1);
-
-        //getBoundsTop
-        g.setStroke(Color.rgb(255, 0, 0));
-        g.strokeRect(x, y, width, height / 2);
-
-        //getBoundsBottom
-        g.setStroke(Color.rgb(0, 255, 0));
-        g.strokeRect(x, y + height / 2, width, height / 2);
-
-        //getBoundsRight
-        g.setStroke(Color.rgb(0, 0, 255));
-        g.strokeRect(x + width / 2, y, width / 2, height);
-
-        //getBoundsLeft
-        g.setStroke(Color.gray(0));
-        g.strokeRect(x, y, width / 2, height);
+        g.drawImage(ballTexture, x, y);
     }
 
     @Override
