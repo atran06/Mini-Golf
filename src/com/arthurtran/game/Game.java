@@ -80,9 +80,9 @@ public class Game extends Application implements Utilities {
         loader = new BufferedImageLoader();
         map1 = loader.imageLoader("maps/map2.png");
         map2 = loader.imageLoader("maps/map1v2.png");
-        map3 = loader.imageLoader("maps/map2.png");
-        map4 = loader.imageLoader("maps/map3.png");
-        map5 = loader.imageLoader("maps/map4.png");
+        map3 = loader.imageLoader("maps/map3.png");
+        map4 = loader.imageLoader("maps/map4.png");
+        map5 = loader.imageLoader("maps/map5.png");
 
         menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
         end = new Image(getClass().getResourceAsStream("/gameImages/endScreen.png"));
@@ -277,8 +277,8 @@ public class Game extends Application implements Utilities {
                     Aim.angle -= 2;
                 }
                 if(e.getCode() == KeyCode.W) {
-                    if(Ball.speed <= 3) {
-                        Ball.speed = 3;
+                    if(Ball.speed <= 2) {
+                        Ball.speed = 2;
                     } else {
                         Ball.speed -= .2;
                     }
@@ -347,6 +347,8 @@ public class Game extends Application implements Utilities {
     public void restart() {
         objects.clear();
 
+        stroke = 0;
+
         if(hole == 1) loadMap(map1);
         if(hole == 2) loadMap(map2);
         if(hole == 3) loadMap(map3);
@@ -374,16 +376,11 @@ public class Game extends Application implements Utilities {
         addMiniMapOnce = true;
 
         hole++;
-        switch(hole) {
-            case 2 :
-                loadMap(map2);
-            case 3 :
-                loadMap(map3);
-            case 4 :
-                loadMap(map4);
-            case 5 :
-                loadMap(map5);
-        }
+
+        if(hole == 2) loadMap(map2);
+        if(hole == 3) loadMap(map3);
+        if(hole == 4) loadMap(map4);
+        if(hole == 5) loadMap(map5);
     }
 
     /**
@@ -416,7 +413,7 @@ public class Game extends Application implements Utilities {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
                 if(green == 255 && red == 0 && blue == 255) {
-                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
+//                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
                 }
             }
         }
@@ -462,7 +459,7 @@ public class Game extends Application implements Utilities {
      * @return True if the hole is the last hole false otherwise
      */
     public boolean getEnd() {
-        if(hole == 5) return true;
+        if(hole == 6) return true;
         return false;
     }
 }
