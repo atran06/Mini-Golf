@@ -278,6 +278,21 @@ public class Game extends Application {
                 this.getVelocity = true;
             }
         });
+
+        canvas.setOnMouseClicked(e -> {
+            System.out.println(e.getX() + " " + e.getY());
+
+            if(e.getX() > 320 && e.getX() < 470) {
+                if(e.getY() > 240 && e.getY() < 280) {
+                    state = STATE.game;
+                }
+            }
+            if(e.getX() > 265 && e.getX() < 545) {
+                if(e.getY() > 359 && e.getY() < 390) {
+                    System.exit(1);
+                }
+            }
+        });
     }
 
     /**
