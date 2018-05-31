@@ -37,11 +37,11 @@ public class MiniMap {
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;
 
-                if(red == 255) {
+                if(red == 255 && blue == 0 && green == 0) {
                     g.setFill(Color.gray(0));
                     g.fillRect((x * 4) + (800 - 200), y * 4, 4, 4);
                 }
-                if(green == 255) {
+                if(green == 255 && red == 0 && blue == 0) {
                     g.setFill(Color.rgb(0, 255, 255));
                     g.fillRect((x * 4) + (800 - 200), y * 4, 4, 4);
                 }
