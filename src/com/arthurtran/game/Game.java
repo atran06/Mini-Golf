@@ -131,6 +131,7 @@ public class Game extends Application implements Utilities {
 
         } else if(state == STATE.game) {
             g.setFill(Color.rgb(0,120,0));
+
             g.fillRect(0, 0, windowWidth, windowHeight);
 
             //everything between gets translated based on camera position//
@@ -152,6 +153,11 @@ public class Game extends Application implements Utilities {
 
             miniMap.draw(g);
 //            fullMap.draw(g);
+
+            g.setFont(new Font("arial", 25));
+            g.setFill(Color.gray(1));
+            g.fillText("Par: " + Integer.toString(par), 600, 220);
+            g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
 
         } else if(state == STATE.end) {
             g.drawImage(end, 0, 0);
@@ -372,14 +378,14 @@ public class Game extends Application implements Utilities {
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;
 
-                if(red == 255) {
+                if(red == 255 && green == 0 && blue == 0) {
                     objects.add(new Barrier(x * 32, y * 32, ID.barrier));
                 }
-                if(blue == 255) {
+                if(blue == 255 && red == 0 && green == 0) {
                     objects.add(new Aim(ballX, ballY, ID.aim, this));
                     objects.add(new Ball(x * 32, y * 32, ID.ball, this));
                 }
-                if(green == 255) {
+                if(green == 255 && red == 0 && blue == 0) {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
             }
