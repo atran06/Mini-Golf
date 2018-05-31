@@ -15,9 +15,10 @@ public class Hole extends Objects {
 
     @Override
     public void draw(GraphicsContext g) {
-        g.setStroke(Color.gray(0));
+        g.setFill(Color.gray(1));
+        g.fillOval(x, y, 32, 32);
         g.setLineWidth(1);
-//        g.strokeRect(x, y, 32, 32);
+        g.setStroke(Color.gray(0));
         g.strokeOval(x, y, 32, 32);
     }
 

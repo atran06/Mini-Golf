@@ -141,7 +141,9 @@ public class Game extends Application implements Utilities {
             g.translate(-camera.getX(), -camera.getY());
 
             for (Objects ob : objects) {
-                ob.draw(g);
+                if(isOnScreen(ob)) {
+                    ob.draw(g);
+                }
             }
 
             g.translate(camera.getX(), camera.getY());
@@ -185,10 +187,6 @@ public class Game extends Application implements Utilities {
                 camera.update(objects.get(i)); //Updates the camera based on f position
             }
             objects.get(i).update(); //Updates the game object
-
-            if(!isOnScreen(objects.get(i))) {
-                objects.remove(objects.get(i));
-            }
         }
 
         strength = (int) (((Ball.speed - 3) / 7) * 100);
@@ -416,16 +414,13 @@ public class Game extends Application implements Utilities {
                 if(green == 255 && red == 0 && blue == 0) {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
-                if(green == 255 && red == 0 && blue == 255) {
-                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
-                }
             }
         }
     }
 
     public boolean isOnScreen(Objects ob) {
-        if(ob.getX() > camera.getX() && ob.getX() < camera.getX() + windowWidth) {
-            if(ob.getY() > camera.getY() && ob.getY() < camera.getY() + windowHeight) {
+        if(ob.getX() > camera.getX() - 64 && ob.getX() < camera.getX() + windowWidth) {
+            if(ob.getY() > camera.getY() - 64 && ob.getY() < camera.getY() + windowHeight) {
                 return true;
             }
         }

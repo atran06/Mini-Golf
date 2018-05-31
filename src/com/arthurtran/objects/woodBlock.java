@@ -3,6 +3,7 @@ package com.arthurtran.objects;
 import com.arthurtran.game.Objects;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 
 import java.awt.geom.Rectangle2D;
 
