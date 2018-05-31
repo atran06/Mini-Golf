@@ -23,9 +23,7 @@ Danny - Worked on the maps and having them show up in the game as blocks
       - Did all of the textures
 
 Parth - Worked on the menu and end screen
-      - Found and added sound effects
       - Helped with mouse events
-a
 
 We also used a little bit of my API for things like audio (was not aware javafx has audio)
 and loading in images (again, was not aware of this feature in javafx)
