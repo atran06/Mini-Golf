@@ -5,10 +5,7 @@ import com.arthurtran.Arch2D.main.Utilities;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import com.arthurtran.map.FullMap;
 import com.arthurtran.map.MiniMap;
-import com.arthurtran.objects.Aim;
-import com.arthurtran.objects.Ball;
-import com.arthurtran.objects.Barrier;
-import com.arthurtran.objects.Hole;
+import com.arthurtran.objects.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -62,7 +59,7 @@ public class Game extends Application implements Utilities {
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
     public static enum ID { //Used enumerations to give unique IDs to each object
-        ball, barrier, obstacle, aim, hole
+        ball, barrier, wood, aim, hole
     }
 
     public static enum STATE { //Used to specify the state of the game
@@ -387,6 +384,9 @@ public class Game extends Application implements Utilities {
                 }
                 if(green == 255 && red == 0 && blue == 0) {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
+                }
+                if(green == 255 && red == 0 && blue == 255) {
+                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
                 }
             }
         }
