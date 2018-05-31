@@ -150,6 +150,11 @@ public class Game extends Application implements Utilities {
             miniMap.draw(g);
 //            fullMap.draw(g);
 
+            g.setFont(new Font("arial", 25));
+            g.setFill(Color.gray(1));
+            g.fillText("Par: " + Integer.toString(par), 600, 220);
+            g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
+
         } else if(state == STATE.end) {
             g.drawImage(end,0, 0);
             //g.fillRect(0, 0, windowWidth, windowHeight);
