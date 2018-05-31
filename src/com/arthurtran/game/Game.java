@@ -353,14 +353,14 @@ public class Game extends Application implements Utilities {
                 int green = (color >> 8) & 0xff;
                 int blue = (color) & 0xff;
 
-                if(red == 255) {
+                if(red == 255 && green == 0 && blue == 0) {
                     objects.add(new Barrier(x * 32, y * 32, ID.barrier));
                 }
-                if(blue == 255) {
+                if(blue == 255 && red == 0 && green == 0) {
                     objects.add(new Aim(ballX, ballY, ID.aim, this));
                     objects.add(new Ball(x * 32, y * 32, ID.ball, this));
                 }
-                if(green == 255) {
+                if(green == 255 && red == 0 && blue == 0) {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
             }
