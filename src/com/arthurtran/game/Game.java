@@ -52,6 +52,9 @@ public class Game extends Application implements Utilities {
 
     private BufferedImage map1;
     private BufferedImage map2;
+    private BufferedImage map3;
+    private BufferedImage map4;
+    private BufferedImage map5;
     private Image menu;
     private Image end;
     private Image controls;
@@ -77,6 +80,9 @@ public class Game extends Application implements Utilities {
         loader = new BufferedImageLoader();
         map1 = loader.imageLoader("maps/map2.png");
         map2 = loader.imageLoader("maps/map1v2.png");
+        map3 = loader.imageLoader("maps/map3.png");
+        map4 = loader.imageLoader("maps/map4.png");
+        map5 = loader.imageLoader("maps/map5.png");
 
         menu = new Image(getClass().getResourceAsStream("/gameImages/Untitled.png"));
         end = new Image(getClass().getResourceAsStream("/gameImages/endScreen.png"));
@@ -194,6 +200,18 @@ public class Game extends Application implements Utilities {
                 this.miniMap = new MiniMap(map2, this);
                 this.fullMap = new FullMap(map2, this);
             }
+            if (hole == 3) {
+                this.miniMap = new MiniMap(map3, this);
+                this.fullMap = new FullMap(map3, this);
+            }
+            if (hole == 4) {
+                this.miniMap = new MiniMap(map4, this);
+                this.fullMap = new FullMap(map4, this);
+            }
+            if (hole == 5) {
+                this.miniMap = new MiniMap(map5, this);
+                this.fullMap = new FullMap(map5, this);
+            }
             addMiniMapOnce = false;
         }
 
@@ -208,6 +226,9 @@ public class Game extends Application implements Utilities {
     public void getHole() {
         if(hole == 1) par = 3;
         if(hole == 2) par = 5;
+        if(hole == 3) par = 4;
+        if(hole == 4) par = 5;
+        if(hole == 5) par = 4;
     }
 
     /**
@@ -256,8 +277,8 @@ public class Game extends Application implements Utilities {
                     Aim.angle -= 2;
                 }
                 if(e.getCode() == KeyCode.W) {
-                    if(Ball.speed <= 3) {
-                        Ball.speed = 3;
+                    if(Ball.speed <= 2) {
+                        Ball.speed = 2;
                     } else {
                         Ball.speed -= .2;
                     }
@@ -326,8 +347,13 @@ public class Game extends Application implements Utilities {
     public void restart() {
         objects.clear();
 
+        stroke = 0;
+
         if(hole == 1) loadMap(map1);
         if(hole == 2) loadMap(map2);
+        if(hole == 3) loadMap(map3);
+        if(hole == 4) loadMap(map4);
+        if(hole == 5) loadMap(map5);
     }
 
     /**
@@ -350,10 +376,11 @@ public class Game extends Application implements Utilities {
         addMiniMapOnce = true;
 
         hole++;
-        switch(hole) {
-            case 2 :
-                loadMap(map2);
-        }
+
+        if(hole == 2) loadMap(map2);
+        if(hole == 3) loadMap(map3);
+        if(hole == 4) loadMap(map4);
+        if(hole == 5) loadMap(map5);
     }
 
     /**
@@ -386,7 +413,7 @@ public class Game extends Application implements Utilities {
                     objects.add(new Hole(x * 32, y * 32, ID.hole));
                 }
                 if(green == 255 && red == 0 && blue == 255) {
-                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
+//                    objects.add(new woodBlock(x * 32, y * 32, ID.wood));
                 }
             }
         }
@@ -432,7 +459,7 @@ public class Game extends Application implements Utilities {
      * @return True if the hole is the last hole false otherwise
      */
     public boolean getEnd() {
-        if(hole == 2) return true;
+        if(hole == 6) return true;
         return false;
     }
 }
