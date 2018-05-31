@@ -29,13 +29,6 @@ public class Ball extends Objects {
 
     @Override
     public void draw(GraphicsContext g) {
-//        g.setFill(Color.gray(1));
-////        g.fillOval(x, y, width, height);
-//        g.setStroke(Color.gray(1));
-////        g.strokeOval(x, y, width, height);
-//
-//        g.setLineWidth(1);
-//
 //        //getBoundsTop
 //        g.setStroke(Color.rgb(255, 0, 0));
 //        g.strokeRect(x, y, width, height / 2);
@@ -73,8 +66,8 @@ public class Ball extends Objects {
             velY = 0;
             game.setBallMoving(false);
         } else {
-            velX *= .97;
-            velY *= .97;
+            velX *= .97; //updates the friction
+            velY *= .97; //updates the friction
         }
 
         game.setBallX(x);

@@ -31,8 +31,8 @@ public class Game extends Application implements Utilities {
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
     private AudioPlayer audio; //also from the library I wrote - Arthur
-    private MiniMap miniMap;
-    private FullMap fullMap;
+    private MiniMap miniMap; //the minimap on the top right
+    private FullMap fullMap; //the full map when you press 'm'
 
     private double windowWidth, windowHeight; //the width and height of the window
     private double ballX, ballY; //used to hold the ball's position... could have used POINT but heard they were slow
@@ -56,9 +56,10 @@ public class Game extends Application implements Utilities {
     private BufferedImage map3;
     private BufferedImage map4;
     private BufferedImage map5;
-    private Image menu;
-    private Image end;
-    private Image controls;
+
+    private Image menu; //menu screen
+    private Image end; //end game screen
+    private Image controls; //control screen
 
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
@@ -70,7 +71,7 @@ public class Game extends Application implements Utilities {
         menu, game, end, controls
     }
 
-    public STATE state = STATE.menu;
+    public STATE state = STATE.menu; //stored enum in a variable
 
     public Game() {
         windowWidth = 800;
@@ -134,7 +135,7 @@ public class Game extends Application implements Utilities {
             g.drawImage(menu, 0, 0);
 
         } else if(state == STATE.game) {
-            g.setFill(Color.rgb(0,120,0));
+            g.setFill(Color.rgb(0, 120, 0));
 
             g.fillRect(0, 0, windowWidth, windowHeight);
 
@@ -203,6 +204,8 @@ public class Game extends Application implements Utilities {
         getHole();
 
         if(addMiniMapOnce) {
+
+            //draws the minimap based on what hole you're on
             if (hole == 1) {
                 this.miniMap = new MiniMap(map1, this);
                 this.fullMap = new FullMap(map1, this);
@@ -228,7 +231,7 @@ public class Game extends Application implements Utilities {
 
         scoreCurrent = stroke - par; //calculates the score of the current hole
 
-        updateAim();
+        updateAim(); //updates te position of the aim
     }
 
     /**
@@ -431,6 +434,11 @@ public class Game extends Application implements Utilities {
         }
     }
 
+    /**
+     * Checks if the object is on the screen
+     * @param ob - An object
+     * @return returns true if object is on screen false otherwise
+     */
     public boolean isOnScreen(Objects ob) {
         if(ob.getX() > camera.getX() - 64 && ob.getX() < camera.getX() + windowWidth) {
             if(ob.getY() > camera.getY() - 64 && ob.getY() < camera.getY() + windowHeight) {
