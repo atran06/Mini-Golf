@@ -1,6 +1,7 @@
 package com.arthurtran.game;
 
 import com.arthurtran.Arch2D.main.AudioPlayer;
+import com.arthurtran.Arch2D.main.Utilities;
 import com.arthurtran.Arch2D.textures.BufferedImageLoader;
 import com.arthurtran.map.FullMap;
 import com.arthurtran.map.MiniMap;
@@ -17,13 +18,14 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
-public class Game extends Application {
+public class Game extends Application implements Utilities {
 
     // TODO: 5/22/2018
     //add menu
@@ -157,7 +159,12 @@ public class Game extends Application {
         } else if(state == STATE.end) {
             g.drawImage(end,0, 0);
             //g.fillRect(0, 0, windowWidth, windowHeight);
-            g.strokeText(Integer.toString(scoreFinal), 400, 400);
+            g.setFont(new Font("arial", 50));
+            if(scoreFinal == 0) {
+                g.fillText("Score: " + "E", windowWidth / 2 - 100, 400);
+            } else {
+                g.fillText("Score: " + Integer.toString(scoreFinal), windowWidth / 2 - 100, 400);
+            }
         }
     }
 
@@ -224,32 +231,34 @@ public class Game extends Application {
      */
     public void keyInput(Canvas canvas) {
         canvas.setOnKeyPressed(e -> {
-            if(e.getCode() == KeyCode.SPACE) {
-                if(canShoot) {
-                    for(int i = 0; i < objects.size(); i++) {
-                        if(objects.get(i).getID() == ID.aim) {
-                            objects.remove(objects.get(i));
+            if(state == STATE.game) {
+                if(e.getCode() == KeyCode.SPACE) {
+                    if(canShoot) {
+                        for(int i = 0; i < objects.size(); i++) {
+                            if(objects.get(i).getID() == ID.aim) {
+                                objects.remove(objects.get(i));
+                            }
                         }
+                        stroke++;
+                        this.shoot = true;
+                        this.ballMoving = true;
                     }
-                    stroke++;
-                    this.shoot = true;
-                    this.ballMoving = true;
                 }
-            }
-            if(e.getCode() == KeyCode.R) {
-                restart();
-            }
-            if(e.getCode() == KeyCode.UP) {
-                Aim.angle += 2;
-            }
-            if(e.getCode() == KeyCode.DOWN) {
-                Aim.angle -= 2;
-            }
-            if(e.getCode() == KeyCode.W) {
-                if(Ball.speed <= 3) {
-                    Ball.speed = 3;
-                } else {
-                    Ball.speed -= .2;
+                if(e.getCode() == KeyCode.R) {
+                    restart();
+                }
+                if(e.getCode() == KeyCode.UP) {
+                    Aim.angle += 2;
+                }
+                if(e.getCode() == KeyCode.DOWN) {
+                    Aim.angle -= 2;
+                }
+                if(e.getCode() == KeyCode.W) {
+                    if(Ball.speed <= 3) {
+                        Ball.speed = 3;
+                    } else {
+                        Ball.speed -= .2;
+                    }
                 }
             }
             if(e.getCode() == KeyCode.S) {
