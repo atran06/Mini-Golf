@@ -239,8 +239,8 @@ public class Game extends Application implements Utilities {
      */
     public void getPar() {
         if(hole == 1) par = 3;
-        if(hole == 2) par = 5;
-        if(hole == 3) par = 4;
+        if(hole == 2) par = 4;
+        if(hole == 3) par = 5;
         if(hole == 4) par = 8;
         if(hole == 5) par = 4;
     }
