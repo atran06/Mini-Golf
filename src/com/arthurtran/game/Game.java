@@ -96,7 +96,7 @@ public class Game extends Application implements Utilities {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("Golf");
+        stage.setTitle("Mini Golf");
         stage.requestFocus();
 
         Canvas canvas = new Canvas(windowWidth, windowHeight);
@@ -201,7 +201,7 @@ public class Game extends Application implements Utilities {
 
         strength = (int) (((Ball.speed - 3) / 7) * 100);
 
-        getHole();
+        getPar();
 
         if(addMiniMapOnce) {
 
@@ -237,11 +237,11 @@ public class Game extends Application implements Utilities {
     /**
      * sets the par of each hole
      */
-    public void getHole() {
+    public void getPar() {
         if(hole == 1) par = 3;
         if(hole == 2) par = 5;
         if(hole == 3) par = 4;
-        if(hole == 4) par = 5;
+        if(hole == 4) par = 8;
         if(hole == 5) par = 4;
     }
 
@@ -291,8 +291,8 @@ public class Game extends Application implements Utilities {
                     Aim.angle -= 2;
                 }
                 if(e.getCode() == KeyCode.W) {
-                    if(Ball.speed <= 2) {
-                        Ball.speed = 2;
+                    if(Ball.speed <= 3) {
+                        Ball.speed = 3;
                     } else {
                         Ball.speed -= .2;
                     }
@@ -303,7 +303,7 @@ public class Game extends Application implements Utilities {
                 }
             }
             if(e.getCode() == KeyCode.S) {
-                if(Ball.speed >= 10) {
+                if(Ball.speed >= 9.89) {
                     Ball.speed = 10;
                 } else {
                     Ball.speed += .2;
@@ -330,8 +330,6 @@ public class Game extends Application implements Utilities {
         });
 
         canvas.setOnMouseClicked(e -> {
-            System.out.println(e.getX() + " " + e.getY());
-
             if(state == STATE.menu) {
                 if(e.getX() > 320 && e.getX() < 470) {
                     if(e.getY() > 240 && e.getY() < 280) {

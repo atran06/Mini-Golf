@@ -29,21 +29,6 @@ public class Ball extends Objects {
 
     @Override
     public void draw(GraphicsContext g) {
-//        //getBoundsTop
-//        g.setStroke(Color.rgb(255, 0, 0));
-//        g.strokeRect(x, y, width, height / 2);
-//
-//        //getBoundsBottom
-//        g.setStroke(Color.rgb(0, 255, 0));
-//        g.strokeRect(x, y + height / 2, width, height / 2);
-//
-//        //getBoundsRight
-//        g.setStroke(Color.rgb(0, 0, 255));
-//        g.strokeRect(x + width / 2, y, width / 2, height);
-//
-//        //getBoundsLeft
-//        g.setStroke(Color.gray(0));
-//        g.strokeRect(x, y, width / 2, height);
 
         g.drawImage(ballTexture, x, y);
     }
@@ -61,7 +46,7 @@ public class Ball extends Objects {
             }
         }
 
-        if(Math.abs(velX) < 0.01 || Math.abs(velY) < 0.001 ) {
+        if(Math.abs(velX) < 0.01 || Math.abs(velY) < 0.01 ) {
             velX = 0;
             velY = 0;
             game.setBallMoving(false);
@@ -88,20 +73,20 @@ public class Ball extends Objects {
                 Objects barrier = game.getObjects().get(i);
 
                 if(this.getBoundsRight().intersects(barrier.getBounds())) {
+                    this.x = barrier.getX() - 16 - 2;
                     velX = -velX;
-                    this.x = barrier.getX() - 16 - 4;
                 }
                 if(this.getBoundsLeft().intersects(barrier.getBounds())) {
+                    this.x = barrier.getX() + 32 + 2;
                     velX = -velX;
-                    this.x = barrier.getX() + 32 + 4;
                 }
                 if(this.getBoundsTop().intersects(barrier.getBounds())) {
+                    this.y = barrier.getY() + 32 + 2;
                     velY = -velY;
-                    this.y = barrier.getY() + 32 + 4;
                 }
                 if(this.getBoundsBottom().intersects(barrier.getBounds())) {
+                    this.y = barrier.getY() - 16 - 2;
                     velY = -velY;
-                    this.y = barrier.getY() - 16 - 4;
                 }
             }
 
@@ -126,21 +111,21 @@ public class Ball extends Objects {
 
     @Override
     public Rectangle2D getBoundsTop() {
-        return new Rectangle2D.Double(x + 5, y - 4, width - 10, height / 2);
+        return new Rectangle2D.Double(x + 6, y, width - 12, height / 2);
     }
 
     @Override
     public Rectangle2D getBoundsBottom() {
-        return new Rectangle2D.Double(x + 5, y + width / 2 + 4, width - 10, height / 2);
+        return new Rectangle2D.Double(x + 6, y + height / 2, width - 12, height / 2);
     }
 
     @Override
     public Rectangle2D getBoundsLeft() {
-        return new Rectangle2D.Double(x - 4, y + 2, width - 11, height - 4);
+        return new Rectangle2D.Double(x, y + 7, 6, height - 14);
     }
 
     @Override
     public Rectangle2D getBoundsRight() {
-        return new Rectangle2D.Double(x + 11 + 4, y + 2, width - 11, height - 4);
+        return new Rectangle2D.Double(x + width - 6, y + 7, 6, height - 14);
     }
 }

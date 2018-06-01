@@ -20,13 +20,6 @@ public class Barrier extends Objects {
 
     @Override
     public void draw(GraphicsContext g) {
-//        g.setFill(Color.gray(1));
-//        g.fillRect(x, y, 32, 32);
-//
-//        g.setLineWidth(1);
-//
-//        g.setStroke(Color.gray(0));
-//        g.strokeRect(x, y, 32, 32);
 
         g.drawImage(blockTexture, x, y);
     }
