@@ -24,7 +24,10 @@ Danny - Worked on the maps and having them show up in the game as blocks
 
 Parth - Worked on the menu and end screen
       - Helped with mouse events
+<<<<<<< HEAD
 
+=======
+>>>>>>> 338ebad9d1d7b0d1a49df8ef03cd567cb75f7f9a
 
 We also used a little bit of my API for things like audio (was not aware javafx has audio)
 and loading in images (again, was not aware of this feature in javafx)

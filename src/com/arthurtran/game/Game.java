@@ -31,8 +31,8 @@ public class Game extends Application implements Utilities {
     private Camera camera;
     private BufferedImageLoader loader; //comes from a library I wrote -Arthur
     private AudioPlayer audio; //also from the library I wrote - Arthur
-    private MiniMap miniMap;
-    private FullMap fullMap;
+    private MiniMap miniMap; //the minimap on the top right
+    private FullMap fullMap; //the full map when you press 'm'
 
     private double windowWidth, windowHeight; //the width and height of the window
     private double ballX, ballY; //used to hold the ball's position... could have used POINT but heard they were slow
@@ -49,15 +49,17 @@ public class Game extends Application implements Utilities {
     private boolean ballMoving = false; //is the ball moving or not
     private boolean canShoot = false; //if able to shoot
     private boolean addMiniMapOnce = true; //used to only create a minimap once per level
+    private boolean showMap = false;
 
     private BufferedImage map1;
     private BufferedImage map2;
     private BufferedImage map3;
     private BufferedImage map4;
     private BufferedImage map5;
-    private Image menu;
-    private Image end;
-    private Image controls;
+
+    private Image menu; //menu screen
+    private Image end; //end game screen
+    private Image controls; //control screen
 
     private LinkedList<Objects> objects = new LinkedList<>(); //list of all objects in the game
 
@@ -69,7 +71,7 @@ public class Game extends Application implements Utilities {
         menu, game, end, controls
     }
 
-    public STATE state = STATE.menu;
+    public STATE state = STATE.menu; //stored enum in a variable
 
     public Game() {
         windowWidth = 800;
@@ -133,7 +135,7 @@ public class Game extends Application implements Utilities {
             g.drawImage(menu, 0, 0);
 
         } else if(state == STATE.game) {
-            g.setFill(Color.rgb(0,120,0));
+            g.setFill(Color.rgb(0, 120, 0));
 
             g.fillRect(0, 0, windowWidth, windowHeight);
 
@@ -157,12 +159,20 @@ public class Game extends Application implements Utilities {
             g.strokeRect(0, 150, 20, 100 * 5);
 
             miniMap.draw(g);
-//            fullMap.draw(g);
+
+            if(showMap) fullMap.draw(g);
 
             g.setFont(new Font("arial", 25));
             g.setFill(Color.gray(1));
             g.fillText("Par: " + Integer.toString(par), 600, 220);
             g.fillText("Stroke: " + Integer.toString(stroke), 600, 240);
+            g.fillText("Hole: " + Integer.toString(hole), 10, 50);
+
+            if(scoreFinal == 0) {
+                g.fillText("Total Score: E", 10, 700);
+            } else {
+                g.fillText("Total Score: " + Integer.toString(scoreFinal), 10, 700);
+            }
 
         } else if(state == STATE.end) {
             g.drawImage(end, 0, 0);
@@ -194,6 +204,8 @@ public class Game extends Application implements Utilities {
         getHole();
 
         if(addMiniMapOnce) {
+
+            //draws the minimap based on what hole you're on
             if (hole == 1) {
                 this.miniMap = new MiniMap(map1, this);
                 this.fullMap = new FullMap(map1, this);
@@ -219,7 +231,7 @@ public class Game extends Application implements Utilities {
 
         scoreCurrent = stroke - par; //calculates the score of the current hole
 
-        updateAim();
+        updateAim(); //updates te position of the aim
     }
 
     /**
@@ -284,6 +296,10 @@ public class Game extends Application implements Utilities {
                     } else {
                         Ball.speed -= .2;
                     }
+                }
+                if(e.getCode() == KeyCode.M) {
+                    if(showMap) showMap = false;
+                    else showMap = true;
                 }
             }
             if(e.getCode() == KeyCode.S) {
@@ -418,6 +434,11 @@ public class Game extends Application implements Utilities {
         }
     }
 
+    /**
+     * Checks if the object is on the screen
+     * @param ob - An object
+     * @return returns true if object is on screen false otherwise
+     */
     public boolean isOnScreen(Objects ob) {
         if(ob.getX() > camera.getX() - 64 && ob.getX() < camera.getX() + windowWidth) {
             if(ob.getY() > camera.getY() - 64 && ob.getY() < camera.getY() + windowHeight) {
@@ -467,7 +488,7 @@ public class Game extends Application implements Utilities {
      * @return True if the hole is the last hole false otherwise
      */
     public boolean getEnd() {
-        if(hole == 6) return true;
+        if(hole == 5) return true;
         return false;
     }
 }
